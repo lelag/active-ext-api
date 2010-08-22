@@ -42,20 +42,147 @@
     <iframe id="search_frame"></iframe>
     
     <div id="content"><div id='filecontents'><p>
-Active-Ext-Api
+ActiveExtAPI
 </p>
-<h6>Introduction goes here.</h6>
+<h6>ActiveExtAPI is a rails plugin that provides a simple ExtJS CRUD api to ActiveRecord models.</h6>
+<p>
+It simply provides 4 additional methods to ActiveRecord::Base that will
+return the data expected by a ExtJS Store.
+</p>
+<p>
+An ExtJS store can be setup with an API for crud operations.
+</p>
+<p>
+ActiveExtAPI has a great synergy with the active-direct plugin has the
+combinaition will provide a CRUD interface for your Ext DirectStores with
+almost no code.
+</p>
+<p>
+It can also be used with regular Controller to provide a regular REST
+interface to your stores.
+</p>
+<p>
+Being generic, the library is very useful for rapid developpment of
+prototypes.
+</p>
+<p>
+Using it in a production application would be hazardous in it&#8217;s
+current state as there is no user access control mechanism meaning that any
+user of your application would potentially be have access to all your
+models.
+</p>
+<p>
+The 4 CRUD method the plugin provides are :
+</p>
+<pre class="code">
+  <span class='minus op'>-</span> <span class='ext_read identifier id'>ext_read</span>
+  <span class='minus op'>-</span> <span class='ext_create identifier id'>ext_create</span>
+  <span class='minus op'>-</span> <span class='ext_update identifier id'>ext_update</span>
+  <span class='minus op'>-</span> <span class='ext_destroy identifier id'>ext_destroy</span>
+</pre>
+<p>
+Notes : 
+</p>
+<ul>
+<li><p>
+ext_read supports most of all the options taken by
+ActiveRecord::Base.find(:all, options = {})
+</p>
+</li>
+<li><p>
+sorting is done through the Ext compliant :sort, :dir options
+</p>
+</li>
+<li><p>
+records of linked models can be included in the result when using the
+:include options
+</p>
+</li>
+<li><p>
+ext_update supports update on a linked model
+</p>
+</li>
+</ul>
+<p>
+See the method documentation for more details
+</p>
+<p>
+Installation
+</p>
+<h6>script/plugin install git@github.com:lelag/active-ext-api.git</h6>
+<p>
+active-direct integration
+</p>
+<h6>If you have the active-direct plugin installed in your rails application,</h6>
+<p>
+you can just call the class methods, acts_as_direct_ext_api method to make
+the  4 crud method available to your client.
+</p>
+<p>
+You can then setup the api config options of your DirectStore and
+you&#8217;re done.
+</p>
+<p>
+If you want to set up additionnal options, you can set the baseParams of
+your stores accordingly.
+</p>
+<p>
+active-direct home is at <a
+href="http://github.com/stonegao/active-direct">github.com/stonegao/active-direct</a>
+</p>
 <p>
 Example
 </p>
-<h6>Example goes here.</h6>
+<h6>in your model</h6>
+<pre class="code">
+    <span class='class class kw'>class</span> <span class='Book constant id'>Book</span> <span class='lt op'>&lt;</span> <span class='ActiveRecord constant id'>ActiveRecord</span><span class='colon2 op'>::</span><span class='Base constant id'>Base</span>
+      <span class='acts_as_direct_ext_api identifier id'>acts_as_direct_ext_api</span>        <span class='comment val'># &lt;- that's it</span>
+    
+      <span class='belongs_to identifier id'>belongs_to</span> <span class='symbol val'>:author</span>
+      <span class='belongs_to identifier id'>belongs_to</span> <span class='symbol val'>:publisher</span>
+      <span class='has_and_belongs_to_many identifier id'>has_and_belongs_to_many</span> <span class='symbol val'>:keywords</span>
+      <span class='has_and_belongs_to_many identifier id'>has_and_belongs_to_many</span> <span class='symbol val'>:categories</span>
+      <span class='has_many identifier id'>has_many</span> <span class='symbol val'>:loans</span>
+      <span class='has_many identifier id'>has_many</span> <span class='symbol val'>:users</span><span class='comma token'>,</span> <span class='symbol val'>:through</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='symbol val'>:loans</span>
+      <span class='has_many identifier id'>has_many</span> <span class='symbol val'>:following_books</span><span class='comma token'>,</span> <span class='symbol val'>:class_name</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>&quot;Book&quot;</span><span class='comma token'>,</span> <span class='symbol val'>:foreign_key</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>&quot;parent_book_id&quot;</span>
+      <span class='belongs_to identifier id'>belongs_to</span> <span class='symbol val'>:parent_book</span><span class='comma token'>,</span> <span class='symbol val'>:class_name</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>&quot;Book&quot;</span>
+    <span class='end end kw'>end</span>
+</pre>
+<p>
+in your DirectStore config
+</p>
+<pre class="code">
+    <span class='api identifier id'>api</span><span class='colon op'>:</span> <span class='lbrace token'>{</span>
+        <span class='read identifier id'>read</span><span class='colon op'>:</span> <span class='App constant id'>App</span><span class='dot token'>.</span><span class='models identifier id'>models</span><span class='dot token'>.</span><span class='Track constant id'>Track</span><span class='dot token'>.</span><span class='ext_read identifier id'>ext_read</span><span class='comma token'>,</span>
+        <span class='create identifier id'>create</span><span class='colon op'>:</span> <span class='App constant id'>App</span><span class='dot token'>.</span><span class='models identifier id'>models</span><span class='dot token'>.</span><span class='Track constant id'>Track</span><span class='dot token'>.</span><span class='ext_create identifier id'>ext_create</span><span class='comma token'>,</span>
+        <span class='update identifier id'>update</span><span class='colon op'>:</span> <span class='App constant id'>App</span><span class='dot token'>.</span><span class='models identifier id'>models</span><span class='dot token'>.</span><span class='Track constant id'>Track</span><span class='dot token'>.</span><span class='ext_update identifier id'>ext_update</span><span class='comma token'>,</span>
+        <span class='destroy identifier id'>destroy</span><span class='colon op'>:</span> <span class='App constant id'>App</span><span class='dot token'>.</span><span class='models identifier id'>models</span><span class='dot token'>.</span><span class='Track constant id'>Track</span><span class='dot token'>.</span><span class='ext_destroy identifier id'>ext_destroy</span>
+    <span class='rbrace token'>}</span>
+
+  
+</pre>
+<p>
+if you want to include a linked secondary model :
+</p>
+<pre class="code">
+     <span class='baseParams identifier id'>baseParams</span><span class='colon op'>:</span> <span class='lbrace token'>{</span>
+         <span class='string val'>&quot;include&quot;</span><span class='colon op'>:</span> <span class='lbrack token'>[</span>
+             <span class='string val'>&quot;author&quot;</span><span class='comma token'>,</span>
+             <span class='string val'>&quot;publisher&quot;</span>
+         <span class='rbrack token'>]</span>
+     <span class='rbrace token'>}</span>
+</pre>
+<p>
+you would then be able to display a book&#8217;s author name  by seting up
+a field &#8220;author.name&#8221; in your record.
+</p>
 <p>
 Copyright &#169; 2010 Le Lag, released under the MIT license
 </p>
 </div></div>
     
     <div id="footer">
-  Generated on Sun Aug 22 22:47:53 2010 by 
+  Generated on Mon Aug 23 00:50:55 2010 by 
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool">yard</a>
   0.5.8 (ruby-1.8.7).
 </div>

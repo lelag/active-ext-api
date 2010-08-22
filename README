@@ -1,13 +1,101 @@
-Active-Ext-Api
+ActiveExtAPI
 ==========
 
-Introduction goes here.
+ActiveExtAPI is a rails plugin that provides a simple ExtJS CRUD api to ActiveRecord models.
 
+It simply provides 4 additional methods to ActiveRecord::Base that will return the data
+expected by a ExtJS Store.
+
+An ExtJS store can be setup with an API for crud operations.
+
+ActiveExtAPI has a great synergy with the active-direct plugin has the combinaition will
+provide a CRUD interface for your Ext DirectStores with almost no code.
+
+It can also be used with regular Controller to provide a regular REST interface to your stores.
+
+Being generic, the library is very useful for rapid developpment of prototypes.
+
+Using it in a production application would be hazardous in it's current state as there is no
+user access control mechanism meaning that any user of your application would potentially be
+have access to all your models.
+
+The 4 CRUD method the plugin provides are :
+
+  - ext_read
+  - ext_create
+  - ext_update
+  - ext_destroy
+
+Notes : 
+- ext_read supports most of all the options taken by ActiveRecord::Base.find(:all, options = {})
+- sorting is done through the Ext compliant :sort, :dir options
+- records of linked models can be included in the result when using the :include options
+- ext_update supports update on a linked model
+
+See the method documentation for more details
+
+
+Installation
+============
+  
+  script/plugin install git@github.com:lelag/active-ext-api.git
+
+
+active-direct integration
+=======================
+
+If you have the active-direct plugin installed in your rails application,
+you can just call the class methods, acts_as_direct_ext_api method to make the 
+4 crud method available to your client.
+
+You can then setup the api config options of your DirectStore and you're done.
+
+If you want to set up additionnal options, you can set the baseParams of your
+stores accordingly.
+
+active-direct home is at http://github.com/stonegao/active-direct
 
 Example
 =======
 
-Example goes here.
+in your model
+
+    class Book < ActiveRecord::Base
+      acts_as_direct_ext_api        # <- that's it
+    
+      belongs_to :author
+      belongs_to :publisher
+      has_and_belongs_to_many :keywords
+      has_and_belongs_to_many :categories
+      has_many :loans
+      has_many :users, :through => :loans
+      has_many :following_books, :class_name => "Book", :foreign_key => "parent_book_id"
+      belongs_to :parent_book, :class_name => "Book"
+    end
+
+
+in your DirectStore config
+
+    api: {
+        read: App.models.Track.ext_read,
+        create: App.models.Track.ext_create,
+        update: App.models.Track.ext_update,
+        destroy: App.models.Track.ext_destroy
+    }
+
+  
+if you want to include a linked secondary model :
+
+     baseParams: {
+         "include": [
+             "author",
+             "publisher"
+         ]
+     }
+
+you would then be able to display a book's author name 
+by seting up a field "author.name" in your record.
+
 
 
 Copyright (c) 2010 Le Lag, released under the MIT license
