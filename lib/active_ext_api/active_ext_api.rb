@@ -8,6 +8,11 @@
 # @author Le Lag
 module ActiveExtAPI 
   DEFAULT_METHODS = { 'ext_read' => 1, 'ext_create' => 1, 'ext_update' => 1, 'ext_destroy' => 1 }
+  EXT_SUPPORTED_OPTIONS = {
+    :ext_read => [:limit, :offset, :start, :sort, :dir, :conditions, :order, :group, :having, :joins, :include, :select, :from, :readonly, :lock],
+    :ext_create => [:data],
+    :ext_update => [:data, :on_edit],
+    :ext_destroy => [:data] }
 
   def self.included(base)
     base.send :extend, ClassMethods
@@ -29,6 +34,17 @@ module ActiveExtAPI
             ActiveDirect::Config.method_config[self.to_s] << { 'name' => mtd, 'len' => mcfg }
           end
         end
+    end
+
+    # Filter the unsupported options that can be used in certain api method but not others
+    #
+    # @param [Symbol] sym the name of the method
+    # @param [Hash] options an options hash
+    # @return [Hash] return options without any options not defined in EXT_SUPPORTED_OPTIONS
+    def filter_unsupported_options(sym, options = {}) 
+      options.delete_if do |key, value|
+        !EXT_SUPPORTED_OPTIONS[sym].include? key
+      end
     end
 
     # Get the total count for a find query ignoring limits
@@ -136,6 +152,7 @@ module ActiveExtAPI
     #   :data : an array of records
     #   :message : optional messages
     def ext_read(opts = {})
+      opts = filter_unsupported_options :ext_read, opts
       er = ExtResponse.new
       opts = filter_sort opts 
 
@@ -192,6 +209,7 @@ module ActiveExtAPI
 
     def ext_create(opts = {})
       raise "No data arguments in request" if opts[:data] == nil
+      opts = filter_unsupported_options :ext_create, opts
       er = ExtResponse.new
       new_records = opts[:data]
       created = []
@@ -301,6 +319,7 @@ module ActiveExtAPI
     #   :message : optional messages
     def ext_update(opts = {})
       raise "No data arguments in request" if opts[:data] == nil
+      opts = filter_unsupported_options :ext_update, opts
       er = ExtResponse.new
       records = opts[:data]
       updated = []
@@ -349,6 +368,7 @@ module ActiveExtAPI
     #   :message : optional messages
     def ext_destroy(opts = {})
       raise "No data arguments in request" if opts[:data] == nil
+      opts = filter_unsupported_options :ext_destroy, opts
       record_ids = opts[:data]
       er = ExtResponse.new
       deleted = []

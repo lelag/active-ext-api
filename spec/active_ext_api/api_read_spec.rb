@@ -103,4 +103,10 @@ describe "ActiveExtAPI::ClassMethods.ext_read" do
 
     end
   end
+  context "with argument that are not supported by ActiveDirect::Base.find" do
+      it "should ignore the non-standard options such as on_edit" do
+        lambda { result = Book.ext_read(:on_edit=>"find_or_create", :sort=>[{:sort=>"author.name", :dir=>"ASC"},{:sort=>"title", :dir=>"DESC"}], :include=>[:author]) 
+        }.should_not raise_error "Unknown key(s): on_edit"
+      end
+  end
 end

@@ -1,6 +1,6 @@
 module ActiveDirect
   class Config
-    cattr_accessor :method_config
+    attr_accessor :method_config
     class << self
       def method_config
         @@method_config ||= Hash.new { |hash, key| hash[key] = [] }
@@ -52,6 +52,12 @@ describe "ActiveExtAPI::ClassMethods.PrivateHelpers" do
     {"name"=>"ext_destroy", "len"=>1}]
       Loan.acts_as_direct_ext_api
       ActiveDirect::Config.method_config[Loan.to_s].length.should == 4
+    end
+  end
+  context "filter_unsupported_options" do
+    it "should remove options that are not allowed in the global EXT_SUPPORTED_OPTIONS" do
+      o = {:data => "stuff", :unsupported => "other stuff"}
+      Loan.filter_unsupported_options(:ext_destroy, o).should == {:data=>"stuff"}
     end
   end
 end
