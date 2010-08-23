@@ -323,6 +323,31 @@ Transform a request to sort on a linked model into the table names.
         <li class="public ">
   <span class="summary_signature">
     
+      <a href="#filter_unsupported_options-instance_method" title="#filter_unsupported_options (instance method)">- (Hash) <strong>filter_unsupported_options</strong>(sym, options = {}) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>
+Filter the unsupported options that can be used in certain api method but
+not others.
+</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
       <a href="#get_total_count-instance_method" title="#get_total_count (instance method)">- (Integer) <strong>get_total_count</strong>(opts = {}) </a>
     
 
@@ -429,19 +454,19 @@ github.com/stonegao/active-direct
       <pre class="lines">
 
 
-23
-24
-25
-26
-27
 28
 29
 30
 31
-32</pre>
+32
+33
+34
+35
+36
+37</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/active_ext_api/active_ext_api.rb', line 23</span>
+      <pre class="code"><span class="info file"># File 'lib/active_ext_api/active_ext_api.rb', line 28</span>
 
 <span class='def def kw'>def</span> <span class='acts_as_direct_ext_api identifier id'>acts_as_direct_ext_api</span><span class='lparen token'>(</span><span class='direct_methods identifier id'>direct_methods</span> <span class='assign token'>=</span> <span class='lbrace token'>{</span><span class='rbrace token'>}</span><span class='rparen token'>)</span>
     <span class='raise identifier id'>raise</span> <span class='string val'>&quot;ActiveDirect was not found &quot;</span> <span class='if if_mod kw'>if</span> <span class='self self kw'>self</span><span class='dot token'>.</span><span class='methods identifier id'>methods</span><span class='dot token'>.</span><span class='include? fid id'>include?</span> <span class='string val'>&quot;acts_as_direct&quot;</span> <span class='eq op'>==</span> <span class='false false kw'>false</span> 
@@ -579,25 +604,25 @@ The return value of the last method call in the chain
       <pre class="lines">
 
 
-58
-59
-60
-61
-62
-63
-64
-65
-66
-67
-68
-69
-70
-71
-72
-73</pre>
+74
+75
+76
+77
+78
+79
+80
+81
+82
+83
+84
+85
+86
+87
+88
+89</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/active_ext_api/active_ext_api.rb', line 58</span>
+      <pre class="code"><span class="info file"># File 'lib/active_ext_api/active_ext_api.rb', line 74</span>
 
 <span class='def def kw'>def</span> <span class='call_func identifier id'>call_func</span><span class='lparen token'>(</span><span class='ar identifier id'>ar</span><span class='comma token'>,</span> <span class='m identifier id'>m</span><span class='comma token'>,</span> <span class='v identifier id'>v</span> <span class='assign token'>=</span> <span class='nil nil kw'>nil</span><span class='rparen token'>)</span>
   <span class='mm identifier id'>mm</span> <span class='assign token'>=</span> <span class='m identifier id'>m</span><span class='lbrack token'>[</span><span class='integer val'>1</span><span class='comma token'>,</span> <span class='m identifier id'>m</span><span class='dot token'>.</span><span class='length identifier id'>length</span> <span class='minus op'>-</span> <span class='integer val'>1</span><span class='rbrack token'>]</span> 
@@ -744,23 +769,6 @@ ExtJS compliant response containing the created records (with id) :success
       <pre class="lines">
 
 
-193
-194
-195
-196
-197
-198
-199
-200
-201
-202
-203
-204
-205
-206
-207
-208
-209
 210
 211
 212
@@ -779,13 +787,32 @@ ExtJS compliant response containing the created records (with id) :success
 225
 226
 227
-228</pre>
+228
+229
+230
+231
+232
+233
+234
+235
+236
+237
+238
+239
+240
+241
+242
+243
+244
+245
+246</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/active_ext_api/active_ext_api.rb', line 193</span>
+      <pre class="code"><span class="info file"># File 'lib/active_ext_api/active_ext_api.rb', line 210</span>
 
 <span class='def def kw'>def</span> <span class='ext_create identifier id'>ext_create</span><span class='lparen token'>(</span><span class='opts identifier id'>opts</span> <span class='assign token'>=</span> <span class='lbrace token'>{</span><span class='rbrace token'>}</span><span class='rparen token'>)</span>
   <span class='raise identifier id'>raise</span> <span class='string val'>&quot;No data arguments in request&quot;</span> <span class='if if_mod kw'>if</span> <span class='opts identifier id'>opts</span><span class='lbrack token'>[</span><span class='symbol val'>:data</span><span class='rbrack token'>]</span> <span class='eq op'>==</span> <span class='nil nil kw'>nil</span>
+  <span class='opts identifier id'>opts</span> <span class='assign token'>=</span> <span class='filter_unsupported_options identifier id'>filter_unsupported_options</span> <span class='symbol val'>:ext_create</span><span class='comma token'>,</span> <span class='opts identifier id'>opts</span>
   <span class='er identifier id'>er</span> <span class='assign token'>=</span> <span class='ExtResponse constant id'>ExtResponse</span><span class='dot token'>.</span><span class='new identifier id'>new</span>
   <span class='new_records identifier id'>new_records</span> <span class='assign token'>=</span> <span class='opts identifier id'>opts</span><span class='lbrack token'>[</span><span class='symbol val'>:data</span><span class='rbrack token'>]</span>
   <span class='created identifier id'>created</span> <span class='assign token'>=</span> <span class='lbrack token'>[</span><span class='rbrack token'>]</span>
@@ -891,20 +918,20 @@ a hash containng the new record&#8217;s attribute including the new id.
       <pre class="lines">
 
 
-170
-171
-172
-173
-174
-175
-176
-177
-178
-179
-180</pre>
+187
+188
+189
+190
+191
+192
+193
+194
+195
+196
+197</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/active_ext_api/active_ext_api.rb', line 170</span>
+      <pre class="code"><span class="info file"># File 'lib/active_ext_api/active_ext_api.rb', line 187</span>
 
 <span class='def def kw'>def</span> <span class='ext_create_record identifier id'>ext_create_record</span><span class='lparen token'>(</span><span class='record identifier id'>record</span> <span class='assign token'>=</span> <span class='lbrace token'>{</span><span class='rbrace token'>}</span><span class='rparen token'>)</span>
   <span class='ar identifier id'>ar</span> <span class='assign token'>=</span> <span class='self self kw'>self</span><span class='dot token'>.</span><span class='new identifier id'>new</span>
@@ -1046,25 +1073,6 @@ messages
       <pre class="lines">
 
 
-350
-351
-352
-353
-354
-355
-356
-357
-358
-359
-360
-361
-362
-363
-364
-365
-366
-367
-368
 369
 370
 371
@@ -1078,13 +1086,34 @@ messages
 379
 380
 381
-382</pre>
+382
+383
+384
+385
+386
+387
+388
+389
+390
+391
+392
+393
+394
+395
+396
+397
+398
+399
+400
+401
+402</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/active_ext_api/active_ext_api.rb', line 350</span>
+      <pre class="code"><span class="info file"># File 'lib/active_ext_api/active_ext_api.rb', line 369</span>
 
 <span class='def def kw'>def</span> <span class='ext_destroy identifier id'>ext_destroy</span><span class='lparen token'>(</span><span class='opts identifier id'>opts</span> <span class='assign token'>=</span> <span class='lbrace token'>{</span><span class='rbrace token'>}</span><span class='rparen token'>)</span>
   <span class='raise identifier id'>raise</span> <span class='string val'>&quot;No data arguments in request&quot;</span> <span class='if if_mod kw'>if</span> <span class='opts identifier id'>opts</span><span class='lbrack token'>[</span><span class='symbol val'>:data</span><span class='rbrack token'>]</span> <span class='eq op'>==</span> <span class='nil nil kw'>nil</span>
+  <span class='opts identifier id'>opts</span> <span class='assign token'>=</span> <span class='filter_unsupported_options identifier id'>filter_unsupported_options</span> <span class='symbol val'>:ext_destroy</span><span class='comma token'>,</span> <span class='opts identifier id'>opts</span>
   <span class='record_ids identifier id'>record_ids</span> <span class='assign token'>=</span> <span class='opts identifier id'>opts</span><span class='lbrack token'>[</span><span class='symbol val'>:data</span><span class='rbrack token'>]</span>
   <span class='er identifier id'>er</span> <span class='assign token'>=</span> <span class='ExtResponse constant id'>ExtResponse</span><span class='dot token'>.</span><span class='new identifier id'>new</span>
   <span class='deleted identifier id'>deleted</span> <span class='assign token'>=</span> <span class='lbrack token'>[</span><span class='rbrack token'>]</span>
@@ -1284,22 +1313,6 @@ messages
       <pre class="lines">
 
 
-138
-139
-140
-141
-142
-143
-144
-145
-146
-147
-148
-149
-150
-151
-152
-153
 154
 155
 156
@@ -1308,12 +1321,30 @@ messages
 159
 160
 161
-162</pre>
+162
+163
+164
+165
+166
+167
+168
+169
+170
+171
+172
+173
+174
+175
+176
+177
+178
+179</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/active_ext_api/active_ext_api.rb', line 138</span>
+      <pre class="code"><span class="info file"># File 'lib/active_ext_api/active_ext_api.rb', line 154</span>
 
 <span class='def def kw'>def</span> <span class='ext_read identifier id'>ext_read</span><span class='lparen token'>(</span><span class='opts identifier id'>opts</span> <span class='assign token'>=</span> <span class='lbrace token'>{</span><span class='rbrace token'>}</span><span class='rparen token'>)</span>
+  <span class='opts identifier id'>opts</span> <span class='assign token'>=</span> <span class='filter_unsupported_options identifier id'>filter_unsupported_options</span> <span class='symbol val'>:ext_read</span><span class='comma token'>,</span> <span class='opts identifier id'>opts</span>
   <span class='er identifier id'>er</span> <span class='assign token'>=</span> <span class='ExtResponse constant id'>ExtResponse</span><span class='dot token'>.</span><span class='new identifier id'>new</span>
   <span class='opts identifier id'>opts</span> <span class='assign token'>=</span> <span class='filter_sort identifier id'>filter_sort</span> <span class='opts identifier id'>opts</span> 
 
@@ -1484,24 +1515,6 @@ ExtJS compliant response containing the updated records (with id) :success
       <pre class="lines">
 
 
-302
-303
-304
-305
-306
-307
-308
-309
-310
-311
-312
-313
-314
-315
-316
-317
-318
-319
 320
 321
 322
@@ -1520,13 +1533,33 @@ ExtJS compliant response containing the updated records (with id) :success
 335
 336
 337
-338</pre>
+338
+339
+340
+341
+342
+343
+344
+345
+346
+347
+348
+349
+350
+351
+352
+353
+354
+355
+356
+357</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/active_ext_api/active_ext_api.rb', line 302</span>
+      <pre class="code"><span class="info file"># File 'lib/active_ext_api/active_ext_api.rb', line 320</span>
 
 <span class='def def kw'>def</span> <span class='ext_update identifier id'>ext_update</span><span class='lparen token'>(</span><span class='opts identifier id'>opts</span> <span class='assign token'>=</span> <span class='lbrace token'>{</span><span class='rbrace token'>}</span><span class='rparen token'>)</span>
   <span class='raise identifier id'>raise</span> <span class='string val'>&quot;No data arguments in request&quot;</span> <span class='if if_mod kw'>if</span> <span class='opts identifier id'>opts</span><span class='lbrack token'>[</span><span class='symbol val'>:data</span><span class='rbrack token'>]</span> <span class='eq op'>==</span> <span class='nil nil kw'>nil</span>
+  <span class='opts identifier id'>opts</span> <span class='assign token'>=</span> <span class='filter_unsupported_options identifier id'>filter_unsupported_options</span> <span class='symbol val'>:ext_update</span><span class='comma token'>,</span> <span class='opts identifier id'>opts</span>
   <span class='er identifier id'>er</span> <span class='assign token'>=</span> <span class='ExtResponse constant id'>ExtResponse</span><span class='dot token'>.</span><span class='new identifier id'>new</span>
   <span class='records identifier id'>records</span> <span class='assign token'>=</span> <span class='opts identifier id'>opts</span><span class='lbrack token'>[</span><span class='symbol val'>:data</span><span class='rbrack token'>]</span>
   <span class='updated identifier id'>updated</span> <span class='assign token'>=</span> <span class='lbrack token'>[</span><span class='rbrack token'>]</span>
@@ -1682,24 +1715,6 @@ attributes.
       <pre class="lines">
 
 
-239
-240
-241
-242
-243
-244
-245
-246
-247
-248
-249
-250
-251
-252
-253
-254
-255
-256
 257
 258
 259
@@ -1729,10 +1744,28 @@ attributes.
 283
 284
 285
-286</pre>
+286
+287
+288
+289
+290
+291
+292
+293
+294
+295
+296
+297
+298
+299
+300
+301
+302
+303
+304</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/active_ext_api/active_ext_api.rb', line 239</span>
+      <pre class="code"><span class="info file"># File 'lib/active_ext_api/active_ext_api.rb', line 257</span>
 
 <span class='def def kw'>def</span> <span class='ext_update_record identifier id'>ext_update_record</span><span class='lparen token'>(</span><span class='record identifier id'>record</span> <span class='assign token'>=</span> <span class='lbrace token'>{</span><span class='rbrace token'>}</span><span class='comma token'>,</span> <span class='options identifier id'>options</span> <span class='assign token'>=</span> <span class='lbrace token'>{</span><span class='rbrace token'>}</span><span class='rparen token'>)</span>
   <span class='secondary_models identifier id'>secondary_models</span> <span class='assign token'>=</span> <span class='lbrack token'>[</span><span class='rbrack token'>]</span>
@@ -1922,28 +1955,28 @@ the provided options with :sort/:dir replaced by :order
       <pre class="lines">
 
 
-104
-105
-106
-107
-108
-109
-110
-111
-112
-113
-114
-115
-116
-117
-118
-119
 120
 121
-122</pre>
+122
+123
+124
+125
+126
+127
+128
+129
+130
+131
+132
+133
+134
+135
+136
+137
+138</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/active_ext_api/active_ext_api.rb', line 104</span>
+      <pre class="code"><span class="info file"># File 'lib/active_ext_api/active_ext_api.rb', line 120</span>
 
 <span class='def def kw'>def</span> <span class='filter_sort identifier id'>filter_sort</span><span class='lparen token'>(</span><span class='opts identifier id'>opts</span><span class='assign token'>=</span> <span class='lbrace token'>{</span><span class='rbrace token'>}</span><span class='rparen token'>)</span>
   <span class='if if kw'>if</span> <span class='opts identifier id'>opts</span><span class='lbrack token'>[</span><span class='symbol val'>:sort</span><span class='rbrack token'>]</span> <span class='neq op'>!=</span> <span class='nil nil kw'>nil</span>
@@ -2047,17 +2080,17 @@ the name of the attributes prefixed with a table name
       <pre class="lines">
 
 
-84
-85
-86
-87
-88
-89
-90
-91</pre>
+100
+101
+102
+103
+104
+105
+106
+107</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/active_ext_api/active_ext_api.rb', line 84</span>
+      <pre class="code"><span class="info file"># File 'lib/active_ext_api/active_ext_api.rb', line 100</span>
 
 <span class='def def kw'>def</span> <span class='filter_sort_tables identifier id'>filter_sort_tables</span><span class='lparen token'>(</span><span class='v identifier id'>v</span><span class='rparen token'>)</span>
   <span class='a identifier id'>a</span> <span class='assign token'>=</span> <span class='v identifier id'>v</span><span class='dot token'>.</span><span class='split identifier id'>split</span><span class='lparen token'>(</span><span class='string val'>&quot;.&quot;</span><span class='rparen token'>)</span>
@@ -2066,6 +2099,110 @@ the name of the attributes prefixed with a table name
   <span class='end end kw'>end</span>
   <span class='a identifier id'>a</span><span class='lbrack token'>[</span><span class='integer val'>-2</span><span class='rbrack token'>]</span><span class='assign token'>=</span> <span class='a identifier id'>a</span><span class='lbrack token'>[</span><span class='integer val'>-2</span><span class='rbrack token'>]</span><span class='dot token'>.</span><span class='pluralize identifier id'>pluralize</span>
   <span class='a identifier id'>a</span><span class='lbrack token'>[</span><span class='integer val'>-2</span><span class='comma token'>,</span><span class='integer val'>2</span><span class='rbrack token'>]</span><span class='dot token'>.</span><span class='join identifier id'>join</span><span class='lparen token'>(</span><span class='string val'>&quot;.&quot;</span><span class='rparen token'>)</span>
+<span class='end end kw'>end</span>
+</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="filter_unsupported_options-instance_method">
+  
+    - (<tt>Hash</tt>) <strong>filter_unsupported_options</strong>(sym, options = {}) 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>
+Filter the unsupported options that can be used in certain api method but
+not others
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <h3>Parameters:</h3>
+<ul class="param">
+  
+    <li>
+      
+        <span class='type'>(<tt>Symbol</tt>)</span>
+      
+      
+        <span class='name'>sym</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>
+the name of the method
+</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='type'>(<tt>Hash</tt>)</span>
+      
+      
+        <span class='name'>options</span>
+      
+      
+        <em class="default">(defaults to: <tt>{}</tt>)</em>
+      
+      
+        &mdash;
+        <div class='inline'><p>
+an options hash
+</p>
+</div>
+      
+    </li>
+  
+</ul>
+<h3>Returns:</h3>
+<ul class="return">
+  
+    <li>
+      
+        <span class='type'>(<tt>Hash</tt>)</span>
+      
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>
+return options without any options not defined in EXT_SUPPORTED_OPTIONS
+</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+44
+45
+46
+47
+48</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/active_ext_api/active_ext_api.rb', line 44</span>
+
+<span class='def def kw'>def</span> <span class='filter_unsupported_options identifier id'>filter_unsupported_options</span><span class='lparen token'>(</span><span class='sym identifier id'>sym</span><span class='comma token'>,</span> <span class='options identifier id'>options</span> <span class='assign token'>=</span> <span class='lbrace token'>{</span><span class='rbrace token'>}</span><span class='rparen token'>)</span> 
+  <span class='options identifier id'>options</span><span class='dot token'>.</span><span class='delete_if identifier id'>delete_if</span> <span class='do do kw'>do</span> <span class='bitor op'>|</span><span class='key identifier id'>key</span><span class='comma token'>,</span> <span class='value identifier id'>value</span><span class='bitor op'>|</span>
+    <span class='notop op'>!</span><span class='EXT_SUPPORTED_OPTIONS constant id'>EXT_SUPPORTED_OPTIONS</span><span class='lbrack token'>[</span><span class='sym identifier id'>sym</span><span class='rbrack token'>]</span><span class='dot token'>.</span><span class='include? fid id'>include?</span> <span class='key identifier id'>key</span>
+  <span class='end end kw'>end</span>
 <span class='end end kw'>end</span>
 </pre>
     </td>
@@ -2139,16 +2276,16 @@ the total number of rows for the query ignoring limit and offset
       <pre class="lines">
 
 
-37
-38
-39
-40
-41
-42
-43</pre>
+53
+54
+55
+56
+57
+58
+59</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/active_ext_api/active_ext_api.rb', line 37</span>
+      <pre class="code"><span class="info file"># File 'lib/active_ext_api/active_ext_api.rb', line 53</span>
 
 <span class='def def kw'>def</span> <span class='get_total_count identifier id'>get_total_count</span><span class='lparen token'>(</span><span class='opts identifier id'>opts</span> <span class='assign token'>=</span> <span class='lbrace token'>{</span><span class='rbrace token'>}</span><span class='rparen token'>)</span> 
     <span class='opts identifier id'>opts</span><span class='lbrack token'>[</span><span class='symbol val'>:limit</span><span class='rbrack token'>]</span> <span class='assign token'>=</span> <span class='nil nil kw'>nil</span>
@@ -2168,7 +2305,7 @@ the total number of rows for the query ignoring limit and offset
 </div>
     
     <div id="footer">
-  Generated on Mon Aug 23 00:50:56 2010 by 
+  Generated on Mon Aug 23 08:58:47 2010 by 
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool">yard</a>
   0.5.8 (ruby-1.8.7).
 </div>
