@@ -8,7 +8,7 @@ expected by a ExtJS Store.
 
 An ExtJS store can be setup with an API for crud operations.
 
-ActiveExtAPI has a great synergy with the active-direct plugin has the combinaition will
+ActiveExtAPI has a great synergy with the active-direct plugin as the combinaition will
 provide a CRUD interface for your Ext DirectStores with almost no code.
 
 It can also be used with regular Controller to provide a regular REST interface to your stores.
@@ -16,7 +16,7 @@ It can also be used with regular Controller to provide a regular REST interface 
 Being generic, the library is very useful for rapid developpment of prototypes.
 
 Using it in a production application would be hazardous in it's current state as there is no
-user access control mechanism meaning that any user of your application would potentially be
+user access control mechanism meaning that any user of your application would potentially 
 have access to all your models.
 
 The 4 CRUD method the plugin provides are :
@@ -27,7 +27,7 @@ The 4 CRUD method the plugin provides are :
   - ext_destroy
 
 Notes : 
-- ext_read supports most of all the options taken by ActiveRecord::Base.find(:all, options = {})
+- ext_read supports most of the options taken by ActiveRecord::Base.find(:all, options = {})
 - sorting is done through the Ext compliant :sort, :dir options
 - records of linked models can be included in the result when using the :include options
 - ext_update supports update on a linked model
