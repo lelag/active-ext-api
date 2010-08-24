@@ -59,32 +59,61 @@ module ActiveExtAPI
     end
 
 
-    # Recursively call method is associated ActiveRecord object
+    # Recursively call methods in associated ActiveRecord (or other) object
     #
     # @example calling book.author.country.name= "France" 
     #   call_func(book, ["author", "country", "name"], "France")
     #
     # @example calling book.author.country.save
     #    call_func(book, ["author", "country", "save"])
+    #
+    # @example calling book.author.books.each {|b| #-> save the title, the year and the country property }
+    #    call_func(book, ["author", "books", ["title", "year", "country"]])
+    #
     # @param [Object] ar The base object (here an ActiveRecord::Base instance) on which to start the call chain
     # @param [Array]  m An array containing the chain of method to call
+    #   The last item of m can be an array with several method or attributes names
+    #   In this case the return value will be a hash.
     # @param [optional Object]  v An optional value that will be assigned to the last item in the chain.  
     # @return The return value of the last method call in the chain
     # @private
     def call_func(ar, m, v = nil)
+      m = [m] if !m.kind_of? Array
       mm = m[1, m.length - 1] 
-      if mm == [] 
-        if v != nil
-          ms = (m[0]+"=").to_sym
-          ar.send ms, v 
+      if mm == [] #last element
+        if !m[0].kind_of? Array
+          if v != nil
+            ms = (m[0]+"=").to_sym
+            ar.send ms, v 
+          else
+            ms = m[0].to_sym
+            ar.send ms 
+          end
         else
-          ms = m[0].to_sym
-          ar.send ms 
+          narh = {}
+          m[0].each do |ma| 
+            if v != nil
+              ms = (ma+"=").to_sym
+              narh[ma] = ar.send ms, v 
+            else
+              ms = ma.to_sym
+              narh[ma] = ar.send ms 
+            end
+          end
+          narh
         end
       else
         ms = m[0].to_sym
         nar = ar.send ms
-        call_func nar, mm, v
+        if nar.kind_of? Array
+          nara = []
+          nar.each do |nari|
+            nara.push call_func nari, mm, v 
+          end
+          nara
+        else
+          call_func nar, mm, v
+        end
       end
     end
 
@@ -401,7 +430,71 @@ module ActiveExtAPI
       er.to_hash
     end    
 
+    def ext_node_is_leaf(level, opts) 
+      opts[:tree_nodes][level+1] == nil ? true : false
+    end
 
+    def ext_get_node_info(node) 
+      m = node.match(/(\d+)_(\w+)_(\d+)/)
+      node = {:level => m[1].to_i, :model => m[2], :id => m[3].to_i}
+    end
+
+    def ext_get_child_nodes(opts = {})
+      parent_node = ext_get_node_info(opts[:node])
+      level = parent_node[:level] + 1
+      parent_cfg = opts[:tree_nodes][parent_node[:level]] 
+      node_cfg = opts[:tree_nodes][parent_node[:level]+1] 
+      parent_model = Kernel.const_get(parent_node[:model]).find(parent_node[:id])
+      n = [node_cfg[:link], [node_cfg[:text], "id", "class"]]
+      node_info = call_func parent_model, n 
+      nodes = []
+      if node_info.kind_of? Array
+        node_info.each do |x|
+          node = {
+            :text => x[node_cfg[:text]],
+            :id => level.to_s + "_"+x["class"].name+"_"+x["id"].to_s
+          }
+          node[:cls] = node_cfg[:cls] if node_cfg[:cls]
+          node[:leaf] = ext_node_is_leaf(level, opts)
+          nodes.push node 
+        end
+      else
+      node = {
+         :text => node_info[node_cfg[:text]],
+         :id => level.to_s + "_"+node_info["class"].name+"_"+node_info["id"].to_s
+      }
+      node[:cls] = node_cfg[:cls] if node_cfg[:cls]
+      node[:leaf] = ext_node_is_leaf(level, opts)
+      nodes.push node 
+      end
+      nodes
+    end
+
+    def ext_get_root_nodes(opts = {})
+      cfg = opts[:tree_nodes][0]
+      raise "A :text attributes must de defined in each node configurations" if !cfg[:text]
+      records = self.find(:all, opts[:root])
+      nodes = []
+      records.each do |r|
+        node = {
+          :text => call_func(r, cfg[:text]),
+          :id => "0_"+self.name+"_"+r.id.to_s
+        }
+        node[:cls] = cfg[:cls] if cfg[:cls]
+        node[:leaf] = ext_node_is_leaf(0, opts)
+        nodes.push node
+      end
+      nodes
+    end
+
+    def ext_get_nodes(opts = {})
+      raise "A tree_nodes configuration item is required" if opts[:tree_nodes] == nil 
+      if opts[:node] == nil
+        ext_get_root_nodes opts
+      else
+        ext_get_child_nodes opts 
+      end
+    end
 
   end
 
