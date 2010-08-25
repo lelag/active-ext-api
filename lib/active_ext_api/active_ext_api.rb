@@ -7,7 +7,7 @@
 #   - ext_delete : used to delete records
 # @author Le Lag
 module ActiveExtAPI 
-  DEFAULT_METHODS = { 'ext_read' => 1, 'ext_create' => 1, 'ext_update' => 1, 'ext_destroy' => 1 }
+  DEFAULT_METHODS = { 'ext_read' => 1, 'ext_create' => 1, 'ext_update' => 1, 'ext_destroy' => 1, 'ext_get_nodes'=> 2 }
   EXT_SUPPORTED_OPTIONS = {
     :ext_read => [:limit, :offset, :start, :sort, :dir, :conditions, :order, :group, :having, :joins, :include, :select, :from, :readonly, :lock],
     :ext_create => [:data],
@@ -459,13 +459,13 @@ module ActiveExtAPI
           nodes.push node 
         end
       else
-      node = {
-         :text => node_info[node_cfg[:text]],
-         :id => level.to_s + "_"+node_info["class"].name+"_"+node_info["id"].to_s
-      }
-      node[:cls] = node_cfg[:cls] if node_cfg[:cls]
-      node[:leaf] = ext_node_is_leaf(level, opts)
-      nodes.push node 
+        node = {
+          :text => node_info[node_cfg[:text]],
+          :id => level.to_s + "_"+node_info["class"].name+"_"+node_info["id"].to_s
+        }
+        node[:cls] = node_cfg[:cls] if node_cfg[:cls]
+        node[:leaf] = ext_node_is_leaf(level, opts)
+        nodes.push node 
       end
       nodes
     end
@@ -487,7 +487,38 @@ module ActiveExtAPI
       nodes
     end
 
-    def ext_get_nodes(opts = {})
+    # Return records as tree node as expected by Ext.tree.TreeLoader
+    #
+    # @example Tree Configuration Example
+    #   
+    #   root id must be root :
+    #   root:{text:"whatever", id:"root"}
+    #
+    #   loader config : 
+    #   loader: {
+    #       directFn: App.models.Model.ext_get_nodes, // requires Active Direct plugin
+    #       paramOrder: ["tree_config"],              // necessary to use for baseParams to be send
+    #        baseParams: {
+    #          "tree_config": {
+    #            "tree_nodes": [
+    #              {
+    #                "cls":"category_cls",
+    #                "text":"name"
+    #              },
+    #              {
+    #                "link":"radios",
+    #                "cls":"radio_cls",
+    #                "text":"name"
+    #              }
+    #            ]
+    #       ...
+    #
+    #
+    # @param [String] the node id with a format #level_#ModelName_#id or "root" for the root node.
+    # @param [Hash] the tree configuration. A :tree_nodes options is required.
+    # @retrun [Array] an array of nodes
+    def ext_get_nodes(node = "" , opts = {})
+      opts[:node] = node if node != "root"
       raise "A tree_nodes configuration item is required" if opts[:tree_nodes] == nil 
       if opts[:node] == nil
         ext_get_root_nodes opts
