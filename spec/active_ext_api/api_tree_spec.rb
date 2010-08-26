@@ -133,14 +133,52 @@ end
       @r.should be_a_kind_of Array
       @r.count.should == 1 
       r1 = @r[0]
-      @r = Author.ext_get_nodes("1_Book_3", @baseParams)
+      @r = Author.ext_get_nodes("1_Book_3?utu", @baseParams)
       r2 = @r[0]
       r1[:id].should_not == r2[:id]
     end
     it "should not cause an error when the random string starts with a number"  do
       lambda {
-        @r = Author.ext_get_nodes("1_Book_3?1", @baseParams)
+        @r = Author.ext_get_nodes("1_Book_3?109", @baseParams)
       }.should_not raise_error
     end
+  end
+  context "with a sigle recursive model" do
+    before(:each) do
+      @baseParams = {
+        :tree_nodes => [
+          {
+            :link => "following_books",
+            :cls => "book_cls",
+            :text => "title"
+          },{
+            :go_to_level => 0
+          }
+        ]
+      }
+    end
+
+    it "should return the children nodes" do
+      r = Book.ext_get_nodes("0_Book_2?hur", @baseParams)
+      r.count.should == 1
+      r = r[0] 
+      id = r[:id].match(/0_Book_(\d+)/)[1].to_i
+      b = Book.find(id)
+      r[:text].should == b.title
+      r[:leaf].should be false
+    end
+
+    it "should return the children nodes" do
+      r = Book.ext_get_nodes("0_Book_3?hur", @baseParams)
+      r.count.should == 1
+      r = r[0] 
+      id = r[:id].match(/0_Book_(\d+)/)[1].to_i
+      b = Book.find(id)
+      r[:text].should == b.title
+    end
+
+    it "should return leaf:true when a recursive call is last in chain"
+
+
   end
 end

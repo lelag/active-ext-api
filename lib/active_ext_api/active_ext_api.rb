@@ -521,7 +521,9 @@ module ActiveExtAPI
     #                "link":"radios",
     #                "cls":"radio_cls",
     #                "text":"name"
-    #              }
+    #              },{
+    #                "go_to_level":0 //recursion (requires that the node 0 has a link option.
+    #             }
     #            ]
     #       ...
     #
