@@ -442,8 +442,13 @@ module ActiveExtAPI
     def ext_get_child_nodes(node, opts = {})
       parent_node = ext_get_node_info(node)
       level = parent_node[:level] + 1
+      raise "This level is not setup in tree config" if opts[:tree_nodes][level] == nil
       parent_cfg = opts[:tree_nodes][parent_node[:level]] 
-      node_cfg = opts[:tree_nodes][parent_node[:level]+1] 
+      node_cfg = opts[:tree_nodes][level] 
+      if node_cfg[:go_to_level] != nil #recursion mecanism
+        level = node_cfg[:go_to_level]
+        node_cfg = opts[:tree_nodes][level] 
+      end
       parent_model = Kernel.const_get(parent_node[:model]).find(parent_node[:id])
       n = [node_cfg[:link], [node_cfg[:text], "id", "class"]]
       node_info = call_func parent_model, n 

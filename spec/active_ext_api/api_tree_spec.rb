@@ -24,8 +24,8 @@ describe ActiveExtAPI::ClassMethods, "ext_get_nodes" do
       }
     end
 
-    it "it should return the list of all items when no root options is given and no node is requested" do
-      r = Book.ext_get_nodes("", @baseParams)
+    it "it should return the list of all items when given a root node id" do
+      r = Book.ext_get_nodes("root", @baseParams)
       r.should be_a_kind_of Array
       r.each do |b|
         b.should be_a_kind_of Hash
@@ -57,7 +57,7 @@ describe ActiveExtAPI::ClassMethods, "ext_get_nodes" do
         b[:leaf].should == true 
       end
     end
-
+  end
   context "with 2 models with a collection" do
     before(:each) do
       @baseParams = {
@@ -73,8 +73,8 @@ describe ActiveExtAPI::ClassMethods, "ext_get_nodes" do
         ]
       }
     end
+
     it "should return the list of all first level children nodes when given a node id" do
-      params = {:node=>"0_Author_2"}.merge!(@baseParams)
       r = Author.ext_get_nodes("0_Author_2", @baseParams)
       r.should be_a_kind_of Array
       r.each do |b|
@@ -89,11 +89,39 @@ describe ActiveExtAPI::ClassMethods, "ext_get_nodes" do
         b[:cls].should == "book_cls"
         b[:leaf].should == true 
       end
-
     end
 
-      
+    it "should return an error when accessing a level that is not set up" do
+      lambda {
+        r = Author.ext_get_nodes("1_Book_2", @baseParams)
+      }.should raise_error "This level is not setup in tree config"
     end
-
+end
+  context "with 2 models and recursion : go_to_level => 0" do
+    before(:each) do
+      @baseParams = {
+        :tree_nodes => [
+          {
+            :link => "author",
+            :cls => "personn_cls",
+            :text => "name"
+          },{
+            :link => "books",
+            :cls => "book_cls",
+            :text => "title"
+          },{
+            :go_to_level => 0
+          }
+        ]
+      }
+      @r = Author.ext_get_nodes("1_Book_3", @baseParams)
+    end
+    it "should return the books author name and reset to level 0" do
+      @r.should be_a_kind_of Array
+      @r.count.should == 1 
+      b = Book.find(3)
+      r = @r[0]
+      r[:text].should == b.author.name
+    end
   end
 end
