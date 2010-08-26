@@ -57,6 +57,12 @@ describe ActiveExtAPI::ClassMethods, "ext_get_nodes" do
         b[:leaf].should == true 
       end
     end
+    it "should filter root nodes query if provided with a root_options option" do 
+      params = {
+        :root_options => {:conditions => ""}
+        
+      } 
+    end
   end
   context "with 2 models with a collection" do
     before(:each) do
@@ -130,6 +136,11 @@ end
       @r = Author.ext_get_nodes("1_Book_3", @baseParams)
       r2 = @r[0]
       r1[:id].should_not == r2[:id]
+    end
+    it "should not cause an error when the random string starts with a number"  do
+      lambda {
+        @r = Author.ext_get_nodes("1_Book_3?1", @baseParams)
+      }.should_not raise_error
     end
   end
 end

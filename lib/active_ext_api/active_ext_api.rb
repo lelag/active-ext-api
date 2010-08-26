@@ -463,7 +463,7 @@ module ActiveExtAPI
         node_info.each do |x|
           node = {
             :text => x[node_cfg[:text]],
-            :id => level.to_s + "_"+x["class"].name+"_"+x["id"].to_s+"_"+ext_random_string
+            :id => level.to_s + "_"+x["class"].name+"_"+x["id"].to_s+"?"+ext_random_string
           }
           node[:cls] = node_cfg[:cls] if node_cfg[:cls]
           node[:leaf] = ext_node_is_leaf(level, opts)
@@ -472,7 +472,7 @@ module ActiveExtAPI
       else
         node = {
           :text => node_info[node_cfg[:text]],
-          :id => level.to_s + "_"+node_info["class"].name+"_"+node_info["id"].to_s+"_"+ext_random_string
+          :id => level.to_s + "_"+node_info["class"].name+"_"+node_info["id"].to_s+"?"+ext_random_string
         }
         node[:cls] = node_cfg[:cls] if node_cfg[:cls]
         node[:leaf] = ext_node_is_leaf(level, opts)
@@ -484,7 +484,7 @@ module ActiveExtAPI
     def ext_get_root_nodes(opts = {})
       cfg = opts[:tree_nodes][0]
       raise "A :text attributes must de defined in each node configurations" if !cfg[:text]
-      records = self.find(:all, opts[:root])
+      records = self.find(:all, opts[:root_options])
       nodes = []
       records.each do |r|
         node = {
@@ -510,6 +510,7 @@ module ActiveExtAPI
     #       directFn: App.models.Model.ext_get_nodes, // requires Active Direct plugin
     #       paramOrder: ["tree_config"],              // necessary to use for baseParams to be send
     #        baseParams: {
+    #          "root_options" : {}      //ActiveRecord::Base.find options goes here
     #          "tree_config": {
     #            "tree_nodes": [
     #              {
