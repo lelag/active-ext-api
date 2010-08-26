@@ -430,6 +430,12 @@ module ActiveExtAPI
       er.to_hash
     end    
 
+
+    def ext_random_string(size = 3) 
+      b =  (48..57).to_a + (65..90).to_a + (97..122).to_a
+      (0...size).collect { b[Kernel.rand(b.length)].chr }.join
+    end
+
     def ext_node_is_leaf(level, opts) 
       opts[:tree_nodes][level+1] == nil ? true : false
     end
@@ -457,7 +463,7 @@ module ActiveExtAPI
         node_info.each do |x|
           node = {
             :text => x[node_cfg[:text]],
-            :id => level.to_s + "_"+x["class"].name+"_"+x["id"].to_s
+            :id => level.to_s + "_"+x["class"].name+"_"+x["id"].to_s+"_"+ext_random_string
           }
           node[:cls] = node_cfg[:cls] if node_cfg[:cls]
           node[:leaf] = ext_node_is_leaf(level, opts)
@@ -466,7 +472,7 @@ module ActiveExtAPI
       else
         node = {
           :text => node_info[node_cfg[:text]],
-          :id => level.to_s + "_"+node_info["class"].name+"_"+node_info["id"].to_s
+          :id => level.to_s + "_"+node_info["class"].name+"_"+node_info["id"].to_s+"_"+ext_random_string
         }
         node[:cls] = node_cfg[:cls] if node_cfg[:cls]
         node[:leaf] = ext_node_is_leaf(level, opts)

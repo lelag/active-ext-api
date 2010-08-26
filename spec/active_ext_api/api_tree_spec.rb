@@ -123,5 +123,13 @@ end
       r = @r[0]
       r[:text].should == b.author.name
     end
+    it "should return a different id for identical nodes" do
+      @r.should be_a_kind_of Array
+      @r.count.should == 1 
+      r1 = @r[0]
+      @r = Author.ext_get_nodes("1_Book_3", @baseParams)
+      r2 = @r[0]
+      r1[:id].should_not == r2[:id]
+    end
   end
 end
