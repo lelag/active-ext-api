@@ -51,7 +51,7 @@ describe "ActiveExtAPI::ClassMethods.PrivateHelpers" do
     {"name"=>"ext_update", "len"=>1},
     {"name"=>"ext_destroy", "len"=>1}]
       Loan.acts_as_direct_ext_api
-      ActiveDirect::Config.method_config[Loan.to_s].length.should == 4
+      ActiveDirect::Config.method_config[Loan.to_s].length.should == 5
     end
   end
   context "filter_unsupported_options" do

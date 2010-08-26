@@ -7,7 +7,7 @@
 #   - ext_delete : used to delete records
 # @author Le Lag
 module ActiveExtAPI 
-  DEFAULT_METHODS = { 'ext_read' => 1, 'ext_create' => 1, 'ext_update' => 1, 'ext_destroy' => 1 }
+  DEFAULT_METHODS = { 'ext_read' => 1, 'ext_create' => 1, 'ext_update' => 1, 'ext_destroy' => 1, 'ext_get_nodes'=> 2 }
   EXT_SUPPORTED_OPTIONS = {
     :ext_read => [:limit, :offset, :start, :sort, :dir, :conditions, :order, :group, :having, :joins, :include, :select, :from, :readonly, :lock],
     :ext_create => [:data],
@@ -431,6 +431,12 @@ module ActiveExtAPI
       er.to_hash
     end    
 
+
+    def ext_random_string(size = 3) 
+      b =  (48..57).to_a + (65..90).to_a + (97..122).to_a
+      (0...size).collect { b[Kernel.rand(b.length)].chr }.join
+    end
+
     def ext_node_is_leaf(level, opts) 
       opts[:tree_nodes][level+1] == nil ? true : false
     end
@@ -440,11 +446,16 @@ module ActiveExtAPI
       node = {:level => m[1].to_i, :model => m[2], :id => m[3].to_i}
     end
 
-    def ext_get_child_nodes(opts = {})
-      parent_node = ext_get_node_info(opts[:node])
+    def ext_get_child_nodes(node, opts = {})
+      parent_node = ext_get_node_info(node)
       level = parent_node[:level] + 1
+      raise "This level is not setup in tree config" if opts[:tree_nodes][level] == nil
       parent_cfg = opts[:tree_nodes][parent_node[:level]] 
-      node_cfg = opts[:tree_nodes][parent_node[:level]+1] 
+      node_cfg = opts[:tree_nodes][level] 
+      if node_cfg[:go_to_level] != nil #recursion mecanism
+        level = node_cfg[:go_to_level]
+        node_cfg = opts[:tree_nodes][level] 
+      end
       parent_model = Kernel.const_get(parent_node[:model]).find(parent_node[:id])
       n = [node_cfg[:link], [node_cfg[:text], "id", "class"]]
       node_info = call_func parent_model, n 
@@ -453,20 +464,20 @@ module ActiveExtAPI
         node_info.each do |x|
           node = {
             :text => x[node_cfg[:text]],
-            :id => level.to_s + "_"+x["class"].name+"_"+x["id"].to_s
+            :id => level.to_s + "_"+x["class"].name+"_"+x["id"].to_s+"?"+ext_random_string
           }
           node[:cls] = node_cfg[:cls] if node_cfg[:cls]
           node[:leaf] = ext_node_is_leaf(level, opts)
           nodes.push node 
         end
       else
-      node = {
-         :text => node_info[node_cfg[:text]],
-         :id => level.to_s + "_"+node_info["class"].name+"_"+node_info["id"].to_s
-      }
-      node[:cls] = node_cfg[:cls] if node_cfg[:cls]
-      node[:leaf] = ext_node_is_leaf(level, opts)
-      nodes.push node 
+        node = {
+          :text => node_info[node_cfg[:text]],
+          :id => level.to_s + "_"+node_info["class"].name+"_"+node_info["id"].to_s+"?"+ext_random_string
+        }
+        node[:cls] = node_cfg[:cls] if node_cfg[:cls]
+        node[:leaf] = ext_node_is_leaf(level, opts)
+        nodes.push node 
       end
       nodes
     end
@@ -474,7 +485,7 @@ module ActiveExtAPI
     def ext_get_root_nodes(opts = {})
       cfg = opts[:tree_nodes][0]
       raise "A :text attributes must de defined in each node configurations" if !cfg[:text]
-      records = self.find(:all, opts[:root])
+      records = self.find(:all, opts[:root_options])
       nodes = []
       records.each do |r|
         node = {
@@ -488,12 +499,46 @@ module ActiveExtAPI
       nodes
     end
 
-    def ext_get_nodes(opts = {})
+    # Return records as tree node as expected by Ext.tree.TreeLoader
+    #
+    # @example Tree Configuration Example
+    #   
+    #   root id must be root :
+    #   root:{text:"whatever", id:"root"}
+    #
+    #   loader config : 
+    #   loader: {
+    #       directFn: App.models.Model.ext_get_nodes, // requires Active Direct plugin
+    #       paramOrder: ["tree_config"],              // necessary to use for baseParams to be send
+    #        baseParams: {
+    #          "root_options" : {}      //ActiveRecord::Base.find options goes here
+    #          "tree_config": {
+    #            "tree_nodes": [
+    #              {
+    #                "cls":"category_cls",
+    #                "text":"name"
+    #              },
+    #              {
+    #                "link":"radios",
+    #                "cls":"radio_cls",
+    #                "text":"name"
+    #              },{
+    #                "go_to_level":0 //recursion (requires that the node 0 has a link option.
+    #             }
+    #            ]
+    #       ...
+    #
+    #
+    # @param [String] the node id with a format #level_#ModelName_#id or "root" for the root node.
+    # @param [Hash] the tree configuration. A :tree_nodes options is required.
+    # @retrun [Array] an array of nodes
+    def ext_get_nodes(node = "" , opts = {})
+      node = "root" if node == ""
       raise "A tree_nodes configuration item is required" if opts[:tree_nodes] == nil 
-      if opts[:node] == nil
+      if node == "root" 
         ext_get_root_nodes opts
       else
-        ext_get_child_nodes opts 
+        ext_get_child_nodes node, opts 
       end
     end
 

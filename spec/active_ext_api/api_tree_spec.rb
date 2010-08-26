@@ -1,6 +1,6 @@
 require File.dirname(__FILE__) + '/../spec_helper'
 
-describe "ActiveExtAPI::ClassMethods.ext_get_nodes" do
+describe ActiveExtAPI::ClassMethods, "ext_get_nodes" do
   context "error specification" do
     it "should raise an error when no config is provided" do
       lambda { Book.ext_get_nodes }.should raise_error "A tree_nodes configuration item is required"
@@ -24,9 +24,8 @@ describe "ActiveExtAPI::ClassMethods.ext_get_nodes" do
       }
     end
 
-    it "it should return the list of all items when no root options is given and no node is requested" do
-      params = {}.merge!(@baseParams)
-      r = Book.ext_get_nodes(params)
+    it "it should return the list of all items when given a root node id" do
+      r = Book.ext_get_nodes("root", @baseParams)
       r.should be_a_kind_of Array
       r.each do |b|
         b.should be_a_kind_of Hash
@@ -43,8 +42,7 @@ describe "ActiveExtAPI::ClassMethods.ext_get_nodes" do
     end
 
     it "should return the list of all first level children nodes when given a node id" do
-      params = {:node=>"0_Book_1"}.merge!(@baseParams)
-      r = Book.ext_get_nodes(params)
+      r = Book.ext_get_nodes("0_Book_1", @baseParams)
       r.should be_a_kind_of Array
       r.each do |b|
         b.should be_a_kind_of Hash
@@ -59,7 +57,13 @@ describe "ActiveExtAPI::ClassMethods.ext_get_nodes" do
         b[:leaf].should == true 
       end
     end
-
+    it "should filter root nodes query if provided with a root_options option" do 
+      params = {
+        :root_options => {:conditions => ""}
+        
+      } 
+    end
+  end
   context "with 2 models with a collection" do
     before(:each) do
       @baseParams = {
@@ -75,9 +79,9 @@ describe "ActiveExtAPI::ClassMethods.ext_get_nodes" do
         ]
       }
     end
+
     it "should return the list of all first level children nodes when given a node id" do
-      params = {:node=>"0_Author_2"}.merge!(@baseParams)
-      r = Author.ext_get_nodes(params)
+      r = Author.ext_get_nodes("0_Author_2", @baseParams)
       r.should be_a_kind_of Array
       r.each do |b|
         b.should be_a_kind_of Hash
@@ -91,11 +95,90 @@ describe "ActiveExtAPI::ClassMethods.ext_get_nodes" do
         b[:cls].should == "book_cls"
         b[:leaf].should == true 
       end
-
     end
 
-      
+    it "should return an error when accessing a level that is not set up" do
+      lambda {
+        r = Author.ext_get_nodes("1_Book_2", @baseParams)
+      }.should raise_error "This level is not setup in tree config"
     end
+end
+  context "with 2 models and recursion : go_to_level => 0" do
+    before(:each) do
+      @baseParams = {
+        :tree_nodes => [
+          {
+            :link => "author",
+            :cls => "personn_cls",
+            :text => "name"
+          },{
+            :link => "books",
+            :cls => "book_cls",
+            :text => "title"
+          },{
+            :go_to_level => 0
+          }
+        ]
+      }
+      @r = Author.ext_get_nodes("1_Book_3", @baseParams)
+    end
+    it "should return the books author name and reset to level 0" do
+      @r.should be_a_kind_of Array
+      @r.count.should == 1 
+      b = Book.find(3)
+      r = @r[0]
+      r[:text].should == b.author.name
+    end
+    it "should return a different id for identical nodes" do
+      @r.should be_a_kind_of Array
+      @r.count.should == 1 
+      r1 = @r[0]
+      @r = Author.ext_get_nodes("1_Book_3?utu", @baseParams)
+      r2 = @r[0]
+      r1[:id].should_not == r2[:id]
+    end
+    it "should not cause an error when the random string starts with a number"  do
+      lambda {
+        @r = Author.ext_get_nodes("1_Book_3?109", @baseParams)
+      }.should_not raise_error
+    end
+  end
+  context "with a sigle recursive model" do
+    before(:each) do
+      @baseParams = {
+        :tree_nodes => [
+          {
+            :link => "following_books",
+            :cls => "book_cls",
+            :text => "title"
+          },{
+            :go_to_level => 0
+          }
+        ]
+      }
+    end
+
+    it "should return the children nodes" do
+      r = Book.ext_get_nodes("0_Book_2?hur", @baseParams)
+      r.count.should == 1
+      r = r[0] 
+      id = r[:id].match(/0_Book_(\d+)/)[1].to_i
+      b = Book.find(id)
+      r[:text].should == b.title
+      r[:leaf].should be false
+    end
+
+    it "should return the children nodes" do
+      r = Book.ext_get_nodes("0_Book_3?hur", @baseParams)
+      r.count.should == 1
+      r = r[0] 
+      id = r[:id].match(/0_Book_(\d+)/)[1].to_i
+      b = Book.find(id)
+      r[:text].should == b.title
+    end
+
+    it "should return leaf:true when a recursive call is last in chain"
+
 
   end
 end
