@@ -27,6 +27,7 @@ module ActiveExtAPI
     # @author Adapted from code from Stone Gao's ActiveDirect library github.com/stonegao/active-direct
     def acts_as_direct_ext_api(direct_methods = {})
         raise "ActiveDirect was not found " if self.methods.include? "acts_as_direct" == false 
+        ActiveDirect::Config.method_config[self.to_s].clear
         direct_methods.stringify_keys!.merge!(DEFAULT_METHODS).each do |mtd, mcfg|
           if mcfg.is_a?(Hash)
             ActiveDirect::Config.method_config[self.to_s] << {'name' => mtd}.merge!(mcfg)
