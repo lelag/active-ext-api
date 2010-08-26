@@ -439,8 +439,8 @@ module ActiveExtAPI
       node = {:level => m[1].to_i, :model => m[2], :id => m[3].to_i}
     end
 
-    def ext_get_child_nodes(opts = {})
-      parent_node = ext_get_node_info(opts[:node])
+    def ext_get_child_nodes(node, opts = {})
+      parent_node = ext_get_node_info(node)
       level = parent_node[:level] + 1
       parent_cfg = opts[:tree_nodes][parent_node[:level]] 
       node_cfg = opts[:tree_nodes][parent_node[:level]+1] 
@@ -518,12 +518,12 @@ module ActiveExtAPI
     # @param [Hash] the tree configuration. A :tree_nodes options is required.
     # @retrun [Array] an array of nodes
     def ext_get_nodes(node = "" , opts = {})
-      opts[:node] = node if node != "root"
+      node = "root" if node == ""
       raise "A tree_nodes configuration item is required" if opts[:tree_nodes] == nil 
-      if opts[:node] == nil
+      if node == "root" 
         ext_get_root_nodes opts
       else
-        ext_get_child_nodes opts 
+        ext_get_child_nodes node, opts 
       end
     end
 

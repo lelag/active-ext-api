@@ -1,6 +1,6 @@
 require File.dirname(__FILE__) + '/../spec_helper'
 
-describe "ActiveExtAPI::ClassMethods.ext_get_nodes" do
+describe ActiveExtAPI::ClassMethods, "ext_get_nodes" do
   context "error specification" do
     it "should raise an error when no config is provided" do
       lambda { Book.ext_get_nodes }.should raise_error "A tree_nodes configuration item is required"
@@ -25,8 +25,7 @@ describe "ActiveExtAPI::ClassMethods.ext_get_nodes" do
     end
 
     it "it should return the list of all items when no root options is given and no node is requested" do
-      params = {}.merge!(@baseParams)
-      r = Book.ext_get_nodes(params)
+      r = Book.ext_get_nodes("", @baseParams)
       r.should be_a_kind_of Array
       r.each do |b|
         b.should be_a_kind_of Hash
@@ -43,8 +42,7 @@ describe "ActiveExtAPI::ClassMethods.ext_get_nodes" do
     end
 
     it "should return the list of all first level children nodes when given a node id" do
-      params = {:node=>"0_Book_1"}.merge!(@baseParams)
-      r = Book.ext_get_nodes(params)
+      r = Book.ext_get_nodes("0_Book_1", @baseParams)
       r.should be_a_kind_of Array
       r.each do |b|
         b.should be_a_kind_of Hash
@@ -77,7 +75,7 @@ describe "ActiveExtAPI::ClassMethods.ext_get_nodes" do
     end
     it "should return the list of all first level children nodes when given a node id" do
       params = {:node=>"0_Author_2"}.merge!(@baseParams)
-      r = Author.ext_get_nodes(params)
+      r = Author.ext_get_nodes("0_Author_2", @baseParams)
       r.should be_a_kind_of Array
       r.each do |b|
         b.should be_a_kind_of Hash
