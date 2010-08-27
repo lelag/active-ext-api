@@ -54,6 +54,7 @@ module ActiveExtAPI
     def get_total_count(opts = {}) 
         opts[:limit] = nil
         opts[:offset] = nil
+        opts[:order] = nil
         opts[:select] = "count(*)"
         sql_count = construct_finder_sql(opts)
         count_by_sql(sql_count)
