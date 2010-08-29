@@ -78,6 +78,30 @@
         <li class="public ">
   <span class="summary_signature">
     
+      <a href="#_ext_api_construct_finder_sql-instance_method" title="#_ext_api_construct_finder_sql (instance method)">- (Object) <strong>_ext_api_construct_finder_sql</strong>(opts = {}) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>
+Private proxy for private ActiveRecord method construct_finder_sql.
+</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
       <a href="#acts_as_direct_ext_api-instance_method" title="#acts_as_direct_ext_api (instance method)">- (Object) <strong>acts_as_direct_ext_api</strong>(direct_methods = {}) </a>
     
 
@@ -93,30 +117,6 @@
   
     <span class="summary_desc"><div class='inline'><p>
 Register the Ext API methods as available to the Direct RPC calls.
-</p>
-</div></span>
-  
-</li>
-
-      
-        <li class="public ">
-  <span class="summary_signature">
-    
-      <a href="#call_func-instance_method" title="#call_func (instance method)">- (Object) <strong>call_func</strong>(ar, m, v = nil) </a>
-    
-
-    
-  </span>
-  
-  
-  
-  
-  
-  
-
-  
-    <span class="summary_desc"><div class='inline'><p>
-Recursively call method is associated ActiveRecord object.
 </p>
 </div></span>
   
@@ -151,31 +151,6 @@ Store.
         <li class="public ">
   <span class="summary_signature">
     
-      <a href="#ext_create_record-instance_method" title="#ext_create_record (instance method)">- (Hash) <strong>ext_create_record</strong>(record = {}) </a>
-    
-
-    
-  </span>
-  
-  
-  
-  
-  
-  
-
-  
-    <span class="summary_desc"><div class='inline'><p>
-Helper method : create a single record If provided with a &#8220;id&#8221;
-attributes, it will be ignored.
-</p>
-</div></span>
-  
-</li>
-
-      
-        <li class="public ">
-  <span class="summary_signature">
-    
       <a href="#ext_destroy-instance_method" title="#ext_destroy (instance method)">- (Hash) <strong>ext_destroy</strong>(opts = {}) </a>
     
 
@@ -190,8 +165,32 @@ attributes, it will be ignored.
 
   
     <span class="summary_desc"><div class='inline'><p>
-Delete one or several records Responds to update requests from an ExtJS
+Delete one or several records Responds to destroy requests from an ExtJS
 Store.
+</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#ext_get_nodes-instance_method" title="#ext_get_nodes (instance method)">- (Array) <strong>ext_get_nodes</strong>(node = &quot;&quot;, opts = {}) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>
+Return records as tree node as expected by Ext.tree.TreeLoader.
 </p>
 </div></span>
   
@@ -247,128 +246,6 @@ Store.
 </li>
 
       
-        <li class="public ">
-  <span class="summary_signature">
-    
-      <a href="#ext_update_record-instance_method" title="#ext_update_record (instance method)">- (Hash) <strong>ext_update_record</strong>(record = {}, options = {}) </a>
-    
-
-    
-  </span>
-  
-  
-  
-  
-  
-  
-
-  
-    <span class="summary_desc"><div class='inline'><p>
-Helper method : update a single record.
-</p>
-</div></span>
-  
-</li>
-
-      
-        <li class="public ">
-  <span class="summary_signature">
-    
-      <a href="#filter_sort-instance_method" title="#filter_sort (instance method)">- (Hash) <strong>filter_sort</strong>(opts = {}) </a>
-    
-
-    
-  </span>
-  
-  
-  
-  
-  
-  
-
-  
-    <span class="summary_desc"><div class='inline'><p>
-Transform Ext provided :sort / :dir options into rail&#8217;s :order
-options.
-</p>
-</div></span>
-  
-</li>
-
-      
-        <li class="public ">
-  <span class="summary_signature">
-    
-      <a href="#filter_sort_tables-instance_method" title="#filter_sort_tables (instance method)">- (Object) <strong>filter_sort_tables</strong>(v) </a>
-    
-
-    
-  </span>
-  
-  
-  
-  
-  
-  
-
-  
-    <span class="summary_desc"><div class='inline'><p>
-Transform a request to sort on a linked model into the table names.
-</p>
-</div></span>
-  
-</li>
-
-      
-        <li class="public ">
-  <span class="summary_signature">
-    
-      <a href="#filter_unsupported_options-instance_method" title="#filter_unsupported_options (instance method)">- (Hash) <strong>filter_unsupported_options</strong>(sym, options = {}) </a>
-    
-
-    
-  </span>
-  
-  
-  
-  
-  
-  
-
-  
-    <span class="summary_desc"><div class='inline'><p>
-Filter the unsupported options that can be used in certain api method but
-not others.
-</p>
-</div></span>
-  
-</li>
-
-      
-        <li class="public ">
-  <span class="summary_signature">
-    
-      <a href="#get_total_count-instance_method" title="#get_total_count (instance method)">- (Integer) <strong>get_total_count</strong>(opts = {}) </a>
-    
-
-    
-  </span>
-  
-  
-  
-  
-  
-  
-
-  
-    <span class="summary_desc"><div class='inline'><p>
-Get the total count for a find query ignoring limits.
-</p>
-</div></span>
-  
-</li>
-
-      
     </ul>
   
 
@@ -379,7 +256,47 @@ Get the total count for a find query ignoring limits.
     
     
       <div class="method_details first">
-  <p class="signature first" id="acts_as_direct_ext_api-instance_method">
+  <p class="signature first" id="_ext_api_construct_finder_sql-instance_method">
+  
+    - (<tt>Object</tt>) <strong>_ext_api_construct_finder_sql</strong>(opts = {}) 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>
+Private proxy for private ActiveRecord method construct_finder_sql
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+36
+37
+38</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/active_ext_api/active_ext_api.rb', line 36</span>
+
+<span class='def def kw'>def</span> <span class='_ext_api_construct_finder_sql identifier id'>_ext_api_construct_finder_sql</span><span class='lparen token'>(</span><span class='opts identifier id'>opts</span> <span class='assign token'>=</span> <span class='lbrace token'>{</span><span class='rbrace token'>}</span><span class='rparen token'>)</span>
+  <span class='construct_finder_sql identifier id'>construct_finder_sql</span><span class='lparen token'>(</span><span class='opts identifier id'>opts</span><span class='rparen token'>)</span>
+<span class='end end kw'>end</span>
+</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="acts_as_direct_ext_api-instance_method">
   
     - (<tt>Object</tt>) <strong>acts_as_direct_ext_api</strong>(direct_methods = {}) 
   
@@ -454,22 +371,24 @@ github.com/stonegao/active-direct
       <pre class="lines">
 
 
+23
+24
+25
+26
+27
 28
 29
 30
 31
 32
-33
-34
-35
-36
-37</pre>
+33</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/active_ext_api/active_ext_api.rb', line 28</span>
+      <pre class="code"><span class="info file"># File 'lib/active_ext_api/active_ext_api.rb', line 23</span>
 
 <span class='def def kw'>def</span> <span class='acts_as_direct_ext_api identifier id'>acts_as_direct_ext_api</span><span class='lparen token'>(</span><span class='direct_methods identifier id'>direct_methods</span> <span class='assign token'>=</span> <span class='lbrace token'>{</span><span class='rbrace token'>}</span><span class='rparen token'>)</span>
     <span class='raise identifier id'>raise</span> <span class='string val'>&quot;ActiveDirect was not found &quot;</span> <span class='if if_mod kw'>if</span> <span class='self self kw'>self</span><span class='dot token'>.</span><span class='methods identifier id'>methods</span><span class='dot token'>.</span><span class='include? fid id'>include?</span> <span class='string val'>&quot;acts_as_direct&quot;</span> <span class='eq op'>==</span> <span class='false false kw'>false</span> 
+    <span class='ActiveDirect constant id'>ActiveDirect</span><span class='colon2 op'>::</span><span class='Config constant id'>Config</span><span class='dot token'>.</span><span class='method_config identifier id'>method_config</span><span class='lbrack token'>[</span><span class='self self kw'>self</span><span class='dot token'>.</span><span class='to_s identifier id'>to_s</span><span class='rbrack token'>]</span><span class='dot token'>.</span><span class='clear identifier id'>clear</span>
     <span class='direct_methods identifier id'>direct_methods</span><span class='dot token'>.</span><span class='stringify_keys! fid id'>stringify_keys!</span><span class='dot token'>.</span><span class='merge! fid id'>merge!</span><span class='lparen token'>(</span><span class='DEFAULT_METHODS constant id'>DEFAULT_METHODS</span><span class='rparen token'>)</span><span class='dot token'>.</span><span class='each identifier id'>each</span> <span class='do do kw'>do</span> <span class='bitor op'>|</span><span class='mtd identifier id'>mtd</span><span class='comma token'>,</span> <span class='mcfg identifier id'>mcfg</span><span class='bitor op'>|</span>
       <span class='if if kw'>if</span> <span class='mcfg identifier id'>mcfg</span><span class='dot token'>.</span><span class='is_a? fid id'>is_a?</span><span class='lparen token'>(</span><span class='Hash constant id'>Hash</span><span class='rparen token'>)</span>
         <span class='ActiveDirect constant id'>ActiveDirect</span><span class='colon2 op'>::</span><span class='Config constant id'>Config</span><span class='dot token'>.</span><span class='method_config identifier id'>method_config</span><span class='lbrack token'>[</span><span class='self self kw'>self</span><span class='dot token'>.</span><span class='to_s identifier id'>to_s</span><span class='rbrack token'>]</span> <span class='lshft op'>&lt;&lt;</span> <span class='lbrace token'>{</span><span class='string val'>'name'</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='mtd identifier id'>mtd</span><span class='rbrace token'>}</span><span class='dot token'>.</span><span class='merge! fid id'>merge!</span><span class='lparen token'>(</span><span class='mcfg identifier id'>mcfg</span><span class='rparen token'>)</span>
@@ -477,168 +396,6 @@ github.com/stonegao/active-direct
         <span class='ActiveDirect constant id'>ActiveDirect</span><span class='colon2 op'>::</span><span class='Config constant id'>Config</span><span class='dot token'>.</span><span class='method_config identifier id'>method_config</span><span class='lbrack token'>[</span><span class='self self kw'>self</span><span class='dot token'>.</span><span class='to_s identifier id'>to_s</span><span class='rbrack token'>]</span> <span class='lshft op'>&lt;&lt;</span> <span class='lbrace token'>{</span> <span class='string val'>'name'</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='mtd identifier id'>mtd</span><span class='comma token'>,</span> <span class='string val'>'len'</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='mcfg identifier id'>mcfg</span> <span class='rbrace token'>}</span>
       <span class='end end kw'>end</span>
     <span class='end end kw'>end</span>
-<span class='end end kw'>end</span>
-</pre>
-    </td>
-  </tr>
-</table>
-</div>
-    
-      <div class="method_details ">
-  <p class="signature " id="call_func-instance_method">
-  
-    - (<tt>Object</tt>) <strong>call_func</strong>(ar, m, v = nil) 
-  
-
-  
-</p><div class="docstring">
-  <div class="discussion">
-    <p>
-Recursively call method is associated ActiveRecord object
-</p>
-
-
-  </div>
-</div>
-<div class="tags">
-  
-  <div class="examples">
-    <h3>Examples:</h3>
-    
-      <h4><div class='inline'><p>
-calling book.author.country.name= &#8220;France&#8220;
-</p>
-</div></h4>
-      <pre class="example code"><span class='call_func identifier id'>call_func</span><span class='lparen token'>(</span><span class='book identifier id'>book</span><span class='comma token'>,</span> <span class='lbrack token'>[</span><span class='string val'>&quot;author&quot;</span><span class='comma token'>,</span> <span class='string val'>&quot;country&quot;</span><span class='comma token'>,</span> <span class='string val'>&quot;name&quot;</span><span class='rbrack token'>]</span><span class='comma token'>,</span> <span class='string val'>&quot;France&quot;</span><span class='rparen token'>)</span>
-</pre>
-    
-      <h4><div class='inline'><p>
-calling book.author.country.save
-</p>
-</div></h4>
-      <pre class="example code"><span class='call_func identifier id'>call_func</span><span class='lparen token'>(</span><span class='book identifier id'>book</span><span class='comma token'>,</span> <span class='lbrack token'>[</span><span class='string val'>&quot;author&quot;</span><span class='comma token'>,</span> <span class='string val'>&quot;country&quot;</span><span class='comma token'>,</span> <span class='string val'>&quot;save&quot;</span><span class='rbrack token'>]</span><span class='rparen token'>)</span>
-</pre>
-    
-  </div>
-<h3>Parameters:</h3>
-<ul class="param">
-  
-    <li>
-      
-        <span class='type'>(<tt>Object</tt>)</span>
-      
-      
-        <span class='name'>ar</span>
-      
-      
-      
-        &mdash;
-        <div class='inline'><p>
-The base object (here an ActiveRecord::Base instance) on which to start the
-call chain
-</p>
-</div>
-      
-    </li>
-  
-    <li>
-      
-        <span class='type'>(<tt>Array</tt>)</span>
-      
-      
-        <span class='name'>m</span>
-      
-      
-      
-        &mdash;
-        <div class='inline'><p>
-An array containing the chain of method to call
-</p>
-</div>
-      
-    </li>
-  
-    <li>
-      
-        <span class='type'>(<tt>optional Object</tt>)</span>
-      
-      
-        <span class='name'>v</span>
-      
-      
-        <em class="default">(defaults to: <tt>nil</tt>)</em>
-      
-      
-        &mdash;
-        <div class='inline'><p>
-An optional value that will be assigned to the last item in the chain.
-</p>
-</div>
-      
-    </li>
-  
-</ul>
-<h3>Returns:</h3>
-<ul class="return">
-  
-    <li>
-      
-        <span class='type'></span>
-      
-      
-      
-      
-        
-        <div class='inline'><p>
-The return value of the last method call in the chain
-</p>
-</div>
-      
-    </li>
-  
-</ul>
-
-</div><table class="source_code">
-  <tr>
-    <td>
-      <pre class="lines">
-
-
-74
-75
-76
-77
-78
-79
-80
-81
-82
-83
-84
-85
-86
-87
-88
-89</pre>
-    </td>
-    <td>
-      <pre class="code"><span class="info file"># File 'lib/active_ext_api/active_ext_api.rb', line 74</span>
-
-<span class='def def kw'>def</span> <span class='call_func identifier id'>call_func</span><span class='lparen token'>(</span><span class='ar identifier id'>ar</span><span class='comma token'>,</span> <span class='m identifier id'>m</span><span class='comma token'>,</span> <span class='v identifier id'>v</span> <span class='assign token'>=</span> <span class='nil nil kw'>nil</span><span class='rparen token'>)</span>
-  <span class='mm identifier id'>mm</span> <span class='assign token'>=</span> <span class='m identifier id'>m</span><span class='lbrack token'>[</span><span class='integer val'>1</span><span class='comma token'>,</span> <span class='m identifier id'>m</span><span class='dot token'>.</span><span class='length identifier id'>length</span> <span class='minus op'>-</span> <span class='integer val'>1</span><span class='rbrack token'>]</span> 
-  <span class='if if kw'>if</span> <span class='mm identifier id'>mm</span> <span class='eq op'>==</span> <span class='lbrack token'>[</span><span class='rbrack token'>]</span> 
-    <span class='if if kw'>if</span> <span class='v identifier id'>v</span> <span class='neq op'>!=</span> <span class='nil nil kw'>nil</span>
-      <span class='ms identifier id'>ms</span> <span class='assign token'>=</span> <span class='lparen token'>(</span><span class='m identifier id'>m</span><span class='lbrack token'>[</span><span class='integer val'>0</span><span class='rbrack token'>]</span><span class='plus op'>+</span><span class='string val'>&quot;=&quot;</span><span class='rparen token'>)</span><span class='dot token'>.</span><span class='to_sym identifier id'>to_sym</span>
-      <span class='ar identifier id'>ar</span><span class='dot token'>.</span><span class='send identifier id'>send</span> <span class='ms identifier id'>ms</span><span class='comma token'>,</span> <span class='v identifier id'>v</span> 
-    <span class='else else kw'>else</span>
-      <span class='ms identifier id'>ms</span> <span class='assign token'>=</span> <span class='m identifier id'>m</span><span class='lbrack token'>[</span><span class='integer val'>0</span><span class='rbrack token'>]</span><span class='dot token'>.</span><span class='to_sym identifier id'>to_sym</span>
-      <span class='ar identifier id'>ar</span><span class='dot token'>.</span><span class='send identifier id'>send</span> <span class='ms identifier id'>ms</span> 
-    <span class='end end kw'>end</span>
-  <span class='else else kw'>else</span>
-    <span class='ms identifier id'>ms</span> <span class='assign token'>=</span> <span class='m identifier id'>m</span><span class='lbrack token'>[</span><span class='integer val'>0</span><span class='rbrack token'>]</span><span class='dot token'>.</span><span class='to_sym identifier id'>to_sym</span>
-    <span class='nar identifier id'>nar</span> <span class='assign token'>=</span> <span class='ar identifier id'>ar</span><span class='dot token'>.</span><span class='send identifier id'>send</span> <span class='ms identifier id'>ms</span>
-    <span class='call_func identifier id'>call_func</span> <span class='nar identifier id'>nar</span><span class='comma token'>,</span> <span class='mm identifier id'>mm</span><span class='comma token'>,</span> <span class='v identifier id'>v</span>
-  <span class='end end kw'>end</span>
 <span class='end end kw'>end</span>
 </pre>
     </td>
@@ -658,6 +415,9 @@ The return value of the last method call in the chain
     <p>
 Create one or several records Responds to creation requests from an ExtJS
 Store
+</p>
+<p>
+ActiveRecord alias for ActiveExtAPI::Create.create
 </p>
 
 
@@ -769,180 +529,17 @@ ExtJS compliant response containing the created records (with id) :success
       <pre class="lines">
 
 
-210
-211
-212
-213
-214
-215
-216
-217
-218
-219
-220
-221
-222
-223
-224
-225
-226
-227
-228
-229
-230
-231
-232
-233
-234
-235
-236
-237
-238
-239
-240
-241
-242
-243
-244
-245
-246</pre>
+74
+75
+76
+77</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/active_ext_api/active_ext_api.rb', line 210</span>
+      <pre class="code"><span class="info file"># File 'lib/active_ext_api/active_ext_api.rb', line 74</span>
 
 <span class='def def kw'>def</span> <span class='ext_create identifier id'>ext_create</span><span class='lparen token'>(</span><span class='opts identifier id'>opts</span> <span class='assign token'>=</span> <span class='lbrace token'>{</span><span class='rbrace token'>}</span><span class='rparen token'>)</span>
-  <span class='raise identifier id'>raise</span> <span class='string val'>&quot;No data arguments in request&quot;</span> <span class='if if_mod kw'>if</span> <span class='opts identifier id'>opts</span><span class='lbrack token'>[</span><span class='symbol val'>:data</span><span class='rbrack token'>]</span> <span class='eq op'>==</span> <span class='nil nil kw'>nil</span>
-  <span class='opts identifier id'>opts</span> <span class='assign token'>=</span> <span class='filter_unsupported_options identifier id'>filter_unsupported_options</span> <span class='symbol val'>:ext_create</span><span class='comma token'>,</span> <span class='opts identifier id'>opts</span>
-  <span class='er identifier id'>er</span> <span class='assign token'>=</span> <span class='ExtResponse constant id'>ExtResponse</span><span class='dot token'>.</span><span class='new identifier id'>new</span>
-  <span class='new_records identifier id'>new_records</span> <span class='assign token'>=</span> <span class='opts identifier id'>opts</span><span class='lbrack token'>[</span><span class='symbol val'>:data</span><span class='rbrack token'>]</span>
-  <span class='created identifier id'>created</span> <span class='assign token'>=</span> <span class='lbrack token'>[</span><span class='rbrack token'>]</span>
-
-  <span class='if if kw'>if</span><span class='lparen token'>(</span><span class='new_records identifier id'>new_records</span><span class='dot token'>.</span><span class='kind_of? fid id'>kind_of?</span> <span class='Array constant id'>Array</span><span class='rparen token'>)</span> 
-    <span class='new_records identifier id'>new_records</span><span class='dot token'>.</span><span class='each identifier id'>each</span> <span class='do do kw'>do</span> <span class='bitor op'>|</span><span class='r identifier id'>r</span><span class='bitor op'>|</span>
-      <span class='begin begin kw'>begin</span>
-        <span class='new_record identifier id'>new_record</span> <span class='assign token'>=</span> <span class='ext_create_record identifier id'>ext_create_record</span> <span class='r identifier id'>r</span>
-        <span class='er identifier id'>er</span><span class='dot token'>.</span><span class='add_data identifier id'>add_data</span><span class='lparen token'>(</span><span class='new_record identifier id'>new_record</span><span class='rparen token'>)</span>
-        <span class='created identifier id'>created</span><span class='dot token'>.</span><span class='push identifier id'>push</span><span class='lparen token'>(</span><span class='new_record identifier id'>new_record</span><span class='lbrack token'>[</span><span class='string val'>&quot;id&quot;</span><span class='rbrack token'>]</span><span class='rparen token'>)</span>
-      <span class='rescue rescue kw'>rescue</span>
-        <span class='er identifier id'>er</span><span class='dot token'>.</span><span class='add_message identifier id'>add_message</span> <span class='dstring node'>&quot;Warning : Could not create record #{r.to_s}. #{$!}\r\n&quot;</span>
-      <span class='end end kw'>end</span>
-    <span class='end end kw'>end</span>
-  <span class='else else kw'>else</span>
-    <span class='r identifier id'>r</span> <span class='assign token'>=</span> <span class='new_records identifier id'>new_records</span> 
-    <span class='begin begin kw'>begin</span>
-      <span class='new_record identifier id'>new_record</span> <span class='assign token'>=</span> <span class='ext_create_record identifier id'>ext_create_record</span> <span class='r identifier id'>r</span>
-      <span class='er identifier id'>er</span><span class='dot token'>.</span><span class='add_data identifier id'>add_data</span><span class='lparen token'>(</span><span class='new_record identifier id'>new_record</span><span class='rparen token'>)</span>
-      <span class='created identifier id'>created</span><span class='dot token'>.</span><span class='push identifier id'>push</span><span class='lparen token'>(</span><span class='new_record identifier id'>new_record</span><span class='lbrack token'>[</span><span class='string val'>&quot;id&quot;</span><span class='rbrack token'>]</span><span class='rparen token'>)</span>
-    <span class='rescue rescue kw'>rescue</span>
-      <span class='er identifier id'>er</span><span class='dot token'>.</span><span class='add_message identifier id'>add_message</span> <span class='dstring node'>&quot;Warning : Could not create record #{r.to_s}. #{$!}\r\n&quot;</span>
-    <span class='end end kw'>end</span>
-  <span class='end end kw'>end</span>
-
-  <span class='if if kw'>if</span> <span class='created identifier id'>created</span><span class='dot token'>.</span><span class='length identifier id'>length</span> <span class='gt op'>&gt;</span> <span class='integer val'>0</span>
-    <span class='er identifier id'>er</span><span class='dot token'>.</span><span class='add_message identifier id'>add_message</span> <span class='dstring node'>&quot;Successfully created #{created.length} records with id : &quot;</span> <span class='plus op'>+</span> <span class='created identifier id'>created</span><span class='dot token'>.</span><span class='join identifier id'>join</span><span class='lparen token'>(</span><span class='string val'>', '</span><span class='rparen token'>)</span>
-    <span class='er identifier id'>er</span><span class='dot token'>.</span><span class='success identifier id'>success</span> <span class='assign token'>=</span> <span class='true true kw'>true</span>
-  <span class='else else kw'>else</span>
-    <span class='er identifier id'>er</span><span class='dot token'>.</span><span class='add_message identifier id'>add_message</span> <span class='string val'>&quot;No record created.&quot;</span>
-    <span class='er identifier id'>er</span><span class='dot token'>.</span><span class='success identifier id'>success</span> <span class='assign token'>=</span> <span class='false false kw'>false</span>
-  <span class='end end kw'>end</span>
-  <span class='er identifier id'>er</span><span class='dot token'>.</span><span class='to_hash identifier id'>to_hash</span> 
-<span class='end end kw'>end</span>
-</pre>
-    </td>
-  </tr>
-</table>
-</div>
-    
-      <div class="method_details ">
-  <p class="signature " id="ext_create_record-instance_method">
-  
-    - (<tt>Hash</tt>) <strong>ext_create_record</strong>(record = {}) 
-  
-
-  
-</p><div class="docstring">
-  <div class="discussion">
-    <p>
-Helper method : create a single record If provided with a &#8220;id&#8221;
-attributes, it will be ignored
-</p>
-
-
-  </div>
-</div>
-<div class="tags">
-  <h3>Parameters:</h3>
-<ul class="param">
-  
-    <li>
-      
-        <span class='type'>(<tt>Hash</tt>)</span>
-      
-      
-        <span class='name'>a</span>
-      
-      
-      
-        &mdash;
-        <div class='inline'><p>
-record to create
-</p>
-</div>
-      
-    </li>
-  
-</ul>
-<h3>Returns:</h3>
-<ul class="return">
-  
-    <li>
-      
-        <span class='type'>(<tt>Hash</tt>)</span>
-      
-      
-      
-      
-        &mdash;
-        <div class='inline'><p>
-a hash containng the new record&#8217;s attribute including the new id.
-</p>
-</div>
-      
-    </li>
-  
-</ul>
-
-</div><table class="source_code">
-  <tr>
-    <td>
-      <pre class="lines">
-
-
-187
-188
-189
-190
-191
-192
-193
-194
-195
-196
-197</pre>
-    </td>
-    <td>
-      <pre class="code"><span class="info file"># File 'lib/active_ext_api/active_ext_api.rb', line 187</span>
-
-<span class='def def kw'>def</span> <span class='ext_create_record identifier id'>ext_create_record</span><span class='lparen token'>(</span><span class='record identifier id'>record</span> <span class='assign token'>=</span> <span class='lbrace token'>{</span><span class='rbrace token'>}</span><span class='rparen token'>)</span>
-  <span class='ar identifier id'>ar</span> <span class='assign token'>=</span> <span class='self self kw'>self</span><span class='dot token'>.</span><span class='new identifier id'>new</span>
-  <span class='record identifier id'>record</span><span class='dot token'>.</span><span class='each_pair identifier id'>each_pair</span> <span class='do do kw'>do</span> <span class='bitor op'>|</span><span class='key identifier id'>key</span><span class='comma token'>,</span> <span class='value identifier id'>value</span><span class='bitor op'>|</span>
-    <span class='if if kw'>if</span><span class='lparen token'>(</span><span class='key identifier id'>key</span> <span class='neq op'>!=</span> <span class='string val'>&quot;id&quot;</span><span class='rparen token'>)</span>
-      <span class='sym identifier id'>sym</span> <span class='assign token'>=</span> <span class='lparen token'>(</span><span class='key identifier id'>key</span><span class='plus op'>+</span><span class='string val'>&quot;=&quot;</span><span class='rparen token'>)</span><span class='dot token'>.</span><span class='to_sym identifier id'>to_sym</span>
-      <span class='ar identifier id'>ar</span><span class='dot token'>.</span><span class='send identifier id'>send</span> <span class='sym identifier id'>sym</span><span class='comma token'>,</span> <span class='value identifier id'>value</span> 
-    <span class='end end kw'>end</span>
-  <span class='end end kw'>end</span>
-  <span class='ar identifier id'>ar</span><span class='dot token'>.</span><span class='save identifier id'>save</span>
-  <span class='ar identifier id'>ar</span><span class='dot token'>.</span><span class='attributes identifier id'>attributes</span>
+  <span class='ext_api identifier id'>ext_api</span> <span class='assign token'>=</span> <span class='ActiveExtAPI constant id'>ActiveExtAPI</span><span class='colon2 op'>::</span><span class='StoreCreate constant id'>StoreCreate</span><span class='dot token'>.</span><span class='new identifier id'>new</span> <span class='self self kw'>self</span>
+  <span class='ext_api identifier id'>ext_api</span><span class='dot token'>.</span><span class='create identifier id'>create</span> <span class='opts identifier id'>opts</span>
 <span class='end end kw'>end</span>
 </pre>
     </td>
@@ -960,8 +557,11 @@ a hash containng the new record&#8217;s attribute including the new id.
 </p><div class="docstring">
   <div class="discussion">
     <p>
-Delete one or several records Responds to update requests from an ExtJS
+Delete one or several records Responds to destroy requests from an ExtJS
 Store
+</p>
+<p>
+ActiveRecord alias for ActiveExtAPI::Destroy.destroy
 </p>
 
 
@@ -1073,77 +673,156 @@ messages
       <pre class="lines">
 
 
-369
-370
-371
-372
-373
-374
-375
-376
-377
-378
-379
-380
-381
-382
-383
-384
-385
-386
-387
-388
-389
-390
-391
-392
-393
-394
-395
-396
-397
-398
-399
-400
-401
-402</pre>
+114
+115
+116
+117</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/active_ext_api/active_ext_api.rb', line 369</span>
+      <pre class="code"><span class="info file"># File 'lib/active_ext_api/active_ext_api.rb', line 114</span>
 
 <span class='def def kw'>def</span> <span class='ext_destroy identifier id'>ext_destroy</span><span class='lparen token'>(</span><span class='opts identifier id'>opts</span> <span class='assign token'>=</span> <span class='lbrace token'>{</span><span class='rbrace token'>}</span><span class='rparen token'>)</span>
-  <span class='raise identifier id'>raise</span> <span class='string val'>&quot;No data arguments in request&quot;</span> <span class='if if_mod kw'>if</span> <span class='opts identifier id'>opts</span><span class='lbrack token'>[</span><span class='symbol val'>:data</span><span class='rbrack token'>]</span> <span class='eq op'>==</span> <span class='nil nil kw'>nil</span>
-  <span class='opts identifier id'>opts</span> <span class='assign token'>=</span> <span class='filter_unsupported_options identifier id'>filter_unsupported_options</span> <span class='symbol val'>:ext_destroy</span><span class='comma token'>,</span> <span class='opts identifier id'>opts</span>
-  <span class='record_ids identifier id'>record_ids</span> <span class='assign token'>=</span> <span class='opts identifier id'>opts</span><span class='lbrack token'>[</span><span class='symbol val'>:data</span><span class='rbrack token'>]</span>
-  <span class='er identifier id'>er</span> <span class='assign token'>=</span> <span class='ExtResponse constant id'>ExtResponse</span><span class='dot token'>.</span><span class='new identifier id'>new</span>
-  <span class='deleted identifier id'>deleted</span> <span class='assign token'>=</span> <span class='lbrack token'>[</span><span class='rbrack token'>]</span>
+  <span class='ext_api identifier id'>ext_api</span> <span class='assign token'>=</span> <span class='ActiveExtAPI constant id'>ActiveExtAPI</span><span class='colon2 op'>::</span><span class='StoreDestroy constant id'>StoreDestroy</span><span class='dot token'>.</span><span class='new identifier id'>new</span> <span class='self self kw'>self</span>
+  <span class='ext_api identifier id'>ext_api</span><span class='dot token'>.</span><span class='destroy identifier id'>destroy</span> <span class='opts identifier id'>opts</span>
+<span class='end end kw'>end</span>
+</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="ext_get_nodes-instance_method">
+  
+    - (<tt>Array</tt>) <strong>ext_get_nodes</strong>(node = &quot;&quot;, opts = {}) 
+  
 
-  <span class='if if kw'>if</span><span class='lparen token'>(</span><span class='record_ids identifier id'>record_ids</span><span class='dot token'>.</span><span class='kind_of? fid id'>kind_of?</span> <span class='Array constant id'>Array</span><span class='rparen token'>)</span> 
-    <span class='record_ids identifier id'>record_ids</span><span class='dot token'>.</span><span class='each identifier id'>each</span> <span class='do do kw'>do</span> <span class='bitor op'>|</span><span class='id identifier id'>id</span><span class='bitor op'>|</span>
-      <span class='begin begin kw'>begin</span>
-        <span class='raise identifier id'>raise</span> <span class='string val'>&quot;record not found&quot;</span> <span class='if if_mod kw'>if</span> <span class='self self kw'>self</span><span class='dot token'>.</span><span class='delete identifier id'>delete</span><span class='lparen token'>(</span><span class='id identifier id'>id</span><span class='rparen token'>)</span> <span class='eq op'>==</span> <span class='integer val'>0</span>
-        <span class='deleted identifier id'>deleted</span><span class='dot token'>.</span><span class='push identifier id'>push</span><span class='lparen token'>(</span><span class='id identifier id'>id</span><span class='rparen token'>)</span>
-      <span class='rescue rescue kw'>rescue</span>
-        <span class='er identifier id'>er</span><span class='dot token'>.</span><span class='add_message identifier id'>add_message</span> <span class='dstring node'>&quot;Warning : Could not destroy record with id #{id} : #{$!}\r\n&quot;</span>
-      <span class='end end kw'>end</span>
-    <span class='end end kw'>end</span>
-  <span class='else else kw'>else</span>
-    <span class='begin begin kw'>begin</span>
-      <span class='raise identifier id'>raise</span> <span class='string val'>&quot;record not found&quot;</span> <span class='if if_mod kw'>if</span> <span class='self self kw'>self</span><span class='dot token'>.</span><span class='delete identifier id'>delete</span><span class='lparen token'>(</span><span class='record_ids identifier id'>record_ids</span><span class='rparen token'>)</span> <span class='eq op'>==</span> <span class='integer val'>0</span>
-      <span class='deleted identifier id'>deleted</span><span class='dot token'>.</span><span class='push identifier id'>push</span><span class='lparen token'>(</span><span class='record_ids identifier id'>record_ids</span><span class='rparen token'>)</span>
-    <span class='rescue rescue kw'>rescue</span>
-      <span class='er identifier id'>er</span><span class='dot token'>.</span><span class='add_message identifier id'>add_message</span> <span class='dstring node'>&quot;Warning : Could not destroy record with id #{record_ids} : #{$!}\r\n&quot;</span>
-    <span class='end end kw'>end</span>
-  <span class='end end kw'>end</span>
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>
+Return records as tree node as expected by Ext.tree.TreeLoader
+</p>
+<p>
+ActiveRecord alias for ActiveExtAPI::Tree.get_nodes
+</p>
 
-  <span class='if if kw'>if</span> <span class='deleted identifier id'>deleted</span><span class='dot token'>.</span><span class='length identifier id'>length</span> <span class='gt op'>&gt;</span> <span class='integer val'>0</span>
-    <span class='er identifier id'>er</span><span class='dot token'>.</span><span class='add_message identifier id'>add_message</span> <span class='dstring node'>&quot;Successfully deleted #{deleted.length} records with id : &quot;</span> <span class='plus op'>+</span> <span class='deleted identifier id'>deleted</span><span class='dot token'>.</span><span class='join identifier id'>join</span><span class='lparen token'>(</span><span class='string val'>', '</span><span class='rparen token'>)</span>
-    <span class='er identifier id'>er</span><span class='dot token'>.</span><span class='success identifier id'>success</span> <span class='assign token'>=</span> <span class='true true kw'>true</span>
-  <span class='else else kw'>else</span>
-    <span class='er identifier id'>er</span><span class='dot token'>.</span><span class='add_message identifier id'>add_message</span> <span class='string val'>&quot;No record deleted.&quot;</span>
-    <span class='er identifier id'>er</span><span class='dot token'>.</span><span class='success identifier id'>success</span> <span class='assign token'>=</span> <span class='false false kw'>false</span>
-  <span class='end end kw'>end</span>
-  <span class='er identifier id'>er</span><span class='dot token'>.</span><span class='to_hash identifier id'>to_hash</span>
+
+  </div>
+</div>
+<div class="tags">
+  
+  <div class="examples">
+    <h3>Examples:</h3>
+    
+      <h4><div class='inline'><p>
+Tree Configuration Example
+</p>
+</div></h4>
+      <pre class="example code">
+<span class='root identifier id'>root</span> <span class='id identifier id'>id</span> <span class='must identifier id'>must</span> <span class='be identifier id'>be</span> <span class='root identifier id'>root</span> <span class='colon op'>:</span>
+<span class='root identifier id'>root</span><span class='symbol val'>:{</span><span class='text identifier id'>text</span><span class='symbol val'>:&quot;whatever&quot;</span><span class='comma token'>,</span> <span class='id identifier id'>id</span><span class='symbol val'>:&quot;root&quot;</span><span class='rbrace token'>}</span>
+
+<span class='loader identifier id'>loader</span> <span class='config identifier id'>config</span> <span class='colon op'>:</span> 
+<span class='loader identifier id'>loader</span><span class='colon op'>:</span> <span class='lbrace token'>{</span>
+    <span class='directFn identifier id'>directFn</span><span class='colon op'>:</span> <span class='App constant id'>App</span><span class='dot token'>.</span><span class='models identifier id'>models</span><span class='dot token'>.</span><span class='Model constant id'>Model</span><span class='dot token'>.</span><span class='ext_get_nodes identifier id'>ext_get_nodes</span><span class='comma token'>,</span> <span class='regexp val'>//</span> <span class='requires identifier id'>requires</span> <span class='Active constant id'>Active</span> <span class='Direct constant id'>Direct</span> <span class='plugin identifier id'>plugin</span>
+    <span class='paramOrder identifier id'>paramOrder</span><span class='colon op'>:</span> <span class='lbrack token'>[</span><span class='string val'>&quot;tree_config&quot;</span><span class='rbrack token'>]</span><span class='comma token'>,</span>              <span class='regexp val'>//</span> <span class='necessary identifier id'>necessary</span> <span class='to identifier id'>to</span> <span class='use identifier id'>use</span> <span class='for for kw'>for</span> <span class='baseParams identifier id'>baseParams</span> <span class='to identifier id'>to</span> <span class='be identifier id'>be</span> <span class='send identifier id'>send</span>
+     <span class='baseParams identifier id'>baseParams</span><span class='colon op'>:</span> <span class='lbrace token'>{</span>
+       <span class='string val'>&quot;root_options&quot;</span> <span class='colon op'>:</span> <span class='lbrace token'>{</span><span class='rbrace token'>}</span>      <span class='div op'>/</span><span class='regexp val'>/ActiveRecord::Base.find options goes here
+       &quot;tree_config&quot;: {
+         &quot;tree_nodes&quot;: [
+           {
+             &quot;cls&quot;:&quot;category_cls&quot;,
+             &quot;text&quot;:&quot;name&quot;
+           },
+           {
+             &quot;link&quot;:&quot;radios&quot;,
+             &quot;cls&quot;:&quot;radio_cls&quot;,
+             &quot;text&quot;:&quot;name&quot;
+           },{
+             &quot;go_to_level&quot;:0 /</span><span class='div op'>/</span><span class='recursion identifier id'>recursion</span> <span class='lparen token'>(</span><span class='requires identifier id'>requires</span> <span class='that identifier id'>that</span> <span class='the identifier id'>the</span> <span class='node identifier id'>node</span> <span class='integer val'>0</span> <span class='has identifier id'>has</span> <span class='a identifier id'>a</span> <span class='link identifier id'>link</span> <span class='option identifier id'>option</span><span class='dot token'>.</span>
+          <span class='rbrace token'>}</span>
+         <span class='rbrack token'>]</span>
+    <span class='dot3 op'>...</span>
+</pre>
+    
+  </div>
+<h3>Parameters:</h3>
+<ul class="param">
+  
+    <li>
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+        <span class='name'>the</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>
+node id with a format #level_#ModelName_#id or &#8220;root&#8221; for the
+root node.
+</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='type'>(<tt>Hash</tt>)</span>
+      
+      
+        <span class='name'>the</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>
+tree configuration. A :tree_nodes options is required.
+</p>
+</div>
+      
+    </li>
+  
+</ul>
+<h3>Returns:</h3>
+<ul class="return">
+  
+    <li>
+      
+        <span class='type'>(<tt>Array</tt>)</span>
+      
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>
+an array of nodes
+</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+155
+156
+157
+158</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/active_ext_api/active_ext_api.rb', line 155</span>
+
+<span class='def def kw'>def</span> <span class='ext_get_nodes identifier id'>ext_get_nodes</span><span class='lparen token'>(</span><span class='node identifier id'>node</span> <span class='assign token'>=</span> <span class='string val'>&quot;&quot;</span> <span class='comma token'>,</span> <span class='opts identifier id'>opts</span> <span class='assign token'>=</span> <span class='lbrace token'>{</span><span class='rbrace token'>}</span><span class='rparen token'>)</span>
+  <span class='ext_api identifier id'>ext_api</span> <span class='assign token'>=</span> <span class='ActiveExtAPI constant id'>ActiveExtAPI</span><span class='colon2 op'>::</span><span class='Tree constant id'>Tree</span><span class='dot token'>.</span><span class='new identifier id'>new</span> <span class='self self kw'>self</span>
+  <span class='ext_api identifier id'>ext_api</span><span class='dot token'>.</span><span class='get_nodes identifier id'>get_nodes</span> <span class='node identifier id'>node</span><span class='comma token'>,</span> <span class='opts identifier id'>opts</span>
 <span class='end end kw'>end</span>
 </pre>
     </td>
@@ -1162,6 +841,9 @@ messages
   <div class="discussion">
     <p>
 Return a list of records that can be used to load an ExtJS Store
+</p>
+<p>
+ActiveRecord alias to ActiveExtAPI::Read.read
 </p>
 
 
@@ -1313,61 +995,17 @@ messages
       <pre class="lines">
 
 
-154
-155
-156
-157
-158
-159
-160
-161
-162
-163
-164
-165
-166
-167
-168
-169
-170
-171
-172
-173
-174
-175
-176
-177
-178
-179</pre>
+57
+58
+59
+60</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/active_ext_api/active_ext_api.rb', line 154</span>
+      <pre class="code"><span class="info file"># File 'lib/active_ext_api/active_ext_api.rb', line 57</span>
 
 <span class='def def kw'>def</span> <span class='ext_read identifier id'>ext_read</span><span class='lparen token'>(</span><span class='opts identifier id'>opts</span> <span class='assign token'>=</span> <span class='lbrace token'>{</span><span class='rbrace token'>}</span><span class='rparen token'>)</span>
-  <span class='opts identifier id'>opts</span> <span class='assign token'>=</span> <span class='filter_unsupported_options identifier id'>filter_unsupported_options</span> <span class='symbol val'>:ext_read</span><span class='comma token'>,</span> <span class='opts identifier id'>opts</span>
-  <span class='er identifier id'>er</span> <span class='assign token'>=</span> <span class='ExtResponse constant id'>ExtResponse</span><span class='dot token'>.</span><span class='new identifier id'>new</span>
-  <span class='opts identifier id'>opts</span> <span class='assign token'>=</span> <span class='filter_sort identifier id'>filter_sort</span> <span class='opts identifier id'>opts</span> 
-
-  <span class='if if kw'>if</span> <span class='opts identifier id'>opts</span><span class='lbrack token'>[</span><span class='symbol val'>:limit</span><span class='rbrack token'>]</span> <span class='neq op'>!=</span> <span class='nil nil kw'>nil</span> 
-      <span class='if if kw'>if</span> <span class='opts identifier id'>opts</span><span class='lbrack token'>[</span><span class='symbol val'>:start</span><span class='rbrack token'>]</span> <span class='neq op'>!=</span> <span class='nil nil kw'>nil</span>
-        <span class='opts identifier id'>opts</span><span class='lbrack token'>[</span><span class='symbol val'>:offset</span><span class='rbrack token'>]</span> <span class='assign token'>=</span> <span class='opts identifier id'>opts</span><span class='dot token'>.</span><span class='delete identifier id'>delete</span> <span class='symbol val'>:start</span>
-      <span class='end end kw'>end</span>
-      <span class='total identifier id'>total</span> <span class='assign token'>=</span> <span class='get_total_count identifier id'>get_total_count</span> <span class='opts identifier id'>opts</span><span class='dot token'>.</span><span class='clone identifier id'>clone</span> <span class='comment val'># total must contains the total number of record without limit/offset</span>
-  <span class='end end kw'>end</span>
-
-  <span class='list identifier id'>list</span> <span class='assign token'>=</span> <span class='self self kw'>self</span><span class='dot token'>.</span><span class='find identifier id'>find</span><span class='lparen token'>(</span><span class='symbol val'>:all</span><span class='comma token'>,</span> <span class='opts identifier id'>opts</span><span class='rparen token'>)</span>
-  <span class='list identifier id'>list</span><span class='dot token'>.</span><span class='each identifier id'>each</span> <span class='do do kw'>do</span> <span class='bitor op'>|</span><span class='r identifier id'>r</span><span class='bitor op'>|</span>
-    <span class='s identifier id'>s</span> <span class='assign token'>=</span> <span class='r identifier id'>r</span><span class='dot token'>.</span><span class='attributes identifier id'>attributes</span>
-    <span class='if if kw'>if</span><span class='lparen token'>(</span><span class='opts identifier id'>opts</span><span class='lbrack token'>[</span><span class='symbol val'>:include</span><span class='rbrack token'>]</span> <span class='neq op'>!=</span> <span class='nil nil kw'>nil</span><span class='rparen token'>)</span>   <span class='comment val'># add assotiations if requested {attr_id, attr : {id: ...</span>
-      <span class='opts identifier id'>opts</span><span class='lbrack token'>[</span><span class='symbol val'>:include</span><span class='rbrack token'>]</span><span class='dot token'>.</span><span class='each identifier id'>each</span> <span class='do do kw'>do</span> <span class='bitor op'>|</span><span class='j identifier id'>j</span><span class='bitor op'>|</span>
-        <span class='s identifier id'>s</span><span class='lbrack token'>[</span><span class='j identifier id'>j</span><span class='dot token'>.</span><span class='to_s identifier id'>to_s</span><span class='rbrack token'>]</span> <span class='assign token'>=</span> <span class='r identifier id'>r</span><span class='dot token'>.</span><span class='send identifier id'>send</span><span class='lparen token'>(</span><span class='j identifier id'>j</span><span class='rparen token'>)</span><span class='dot token'>.</span><span class='attributes identifier id'>attributes</span>
-      <span class='end end kw'>end</span>
-    <span class='end end kw'>end</span>
-    <span class='er identifier id'>er</span><span class='dot token'>.</span><span class='add_data identifier id'>add_data</span> <span class='s identifier id'>s</span>
-  <span class='end end kw'>end</span>
-
-  <span class='er identifier id'>er</span><span class='dot token'>.</span><span class='add identifier id'>add</span><span class='lparen token'>(</span><span class='symbol val'>:total</span><span class='comma token'>,</span> <span class='total identifier id'>total</span> <span class='orop op'>||</span> <span class='er identifier id'>er</span><span class='dot token'>.</span><span class='data identifier id'>data</span><span class='dot token'>.</span><span class='length identifier id'>length</span><span class='rparen token'>)</span>
-  <span class='er identifier id'>er</span><span class='dot token'>.</span><span class='to_hash identifier id'>to_hash</span>
+  <span class='ext_api identifier id'>ext_api</span> <span class='assign token'>=</span> <span class='ActiveExtAPI constant id'>ActiveExtAPI</span><span class='colon2 op'>::</span><span class='StoreRead constant id'>StoreRead</span><span class='dot token'>.</span><span class='new identifier id'>new</span> <span class='self self kw'>self</span>
+  <span class='ext_api identifier id'>ext_api</span><span class='dot token'>.</span><span class='read identifier id'>read</span> <span class='opts identifier id'>opts</span>
 <span class='end end kw'>end</span>
 </pre>
     </td>
@@ -1387,6 +1025,9 @@ messages
     <p>
 Update one or several records Responds to update requests from an ExtJS
 Store
+</p>
+<p>
+ActiveRecord alias for ActiveExtAPI::Update.update
 </p>
 
 
@@ -1515,784 +1156,17 @@ ExtJS compliant response containing the updated records (with id) :success
       <pre class="lines">
 
 
-320
-321
-322
-323
-324
-325
-326
-327
-328
-329
-330
-331
-332
-333
-334
-335
-336
-337
-338
-339
-340
-341
-342
-343
-344
-345
-346
-347
-348
-349
-350
-351
-352
-353
-354
-355
-356
-357</pre>
+97
+98
+99
+100</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/active_ext_api/active_ext_api.rb', line 320</span>
+      <pre class="code"><span class="info file"># File 'lib/active_ext_api/active_ext_api.rb', line 97</span>
 
 <span class='def def kw'>def</span> <span class='ext_update identifier id'>ext_update</span><span class='lparen token'>(</span><span class='opts identifier id'>opts</span> <span class='assign token'>=</span> <span class='lbrace token'>{</span><span class='rbrace token'>}</span><span class='rparen token'>)</span>
-  <span class='raise identifier id'>raise</span> <span class='string val'>&quot;No data arguments in request&quot;</span> <span class='if if_mod kw'>if</span> <span class='opts identifier id'>opts</span><span class='lbrack token'>[</span><span class='symbol val'>:data</span><span class='rbrack token'>]</span> <span class='eq op'>==</span> <span class='nil nil kw'>nil</span>
-  <span class='opts identifier id'>opts</span> <span class='assign token'>=</span> <span class='filter_unsupported_options identifier id'>filter_unsupported_options</span> <span class='symbol val'>:ext_update</span><span class='comma token'>,</span> <span class='opts identifier id'>opts</span>
-  <span class='er identifier id'>er</span> <span class='assign token'>=</span> <span class='ExtResponse constant id'>ExtResponse</span><span class='dot token'>.</span><span class='new identifier id'>new</span>
-  <span class='records identifier id'>records</span> <span class='assign token'>=</span> <span class='opts identifier id'>opts</span><span class='lbrack token'>[</span><span class='symbol val'>:data</span><span class='rbrack token'>]</span>
-  <span class='updated identifier id'>updated</span> <span class='assign token'>=</span> <span class='lbrack token'>[</span><span class='rbrack token'>]</span>
-
-  <span class='if if kw'>if</span><span class='lparen token'>(</span><span class='records identifier id'>records</span><span class='dot token'>.</span><span class='kind_of? fid id'>kind_of?</span> <span class='Array constant id'>Array</span><span class='rparen token'>)</span>
-    <span class='records identifier id'>records</span><span class='dot token'>.</span><span class='each identifier id'>each</span> <span class='do do kw'>do</span> <span class='bitor op'>|</span><span class='r identifier id'>r</span><span class='bitor op'>|</span>
-      <span class='begin begin kw'>begin</span>
-        <span class='er identifier id'>er</span><span class='dot token'>.</span><span class='add_data identifier id'>add_data</span><span class='lparen token'>(</span><span class='ext_update_record identifier id'>ext_update_record</span> <span class='r identifier id'>r</span><span class='comma token'>,</span> <span class='opts identifier id'>opts</span><span class='rparen token'>)</span>
-        <span class='updated identifier id'>updated</span><span class='dot token'>.</span><span class='push identifier id'>push</span> <span class='r identifier id'>r</span><span class='lbrack token'>[</span><span class='string val'>&quot;id&quot;</span><span class='rbrack token'>]</span>
-      <span class='rescue rescue kw'>rescue</span>
-        <span class='er identifier id'>er</span><span class='dot token'>.</span><span class='add_message identifier id'>add_message</span> <span class='dstring node'>&quot;Warning : Could not update record with id #{r[&quot;id&quot;]}. #{$!}&quot;</span>
-        <span class='raise identifier id'>raise</span>
-      <span class='end end kw'>end</span>
-    <span class='end end kw'>end</span>
-  <span class='else else kw'>else</span>
-    <span class='r identifier id'>r</span> <span class='assign token'>=</span> <span class='records identifier id'>records</span> 
-    <span class='begin begin kw'>begin</span>
-      <span class='er identifier id'>er</span><span class='dot token'>.</span><span class='add_data identifier id'>add_data</span><span class='lparen token'>(</span><span class='ext_update_record identifier id'>ext_update_record</span> <span class='r identifier id'>r</span><span class='comma token'>,</span> <span class='opts identifier id'>opts</span><span class='rparen token'>)</span>
-      <span class='updated identifier id'>updated</span><span class='dot token'>.</span><span class='push identifier id'>push</span> <span class='r identifier id'>r</span><span class='lbrack token'>[</span><span class='string val'>&quot;id&quot;</span><span class='rbrack token'>]</span>
-    <span class='rescue rescue kw'>rescue</span>
-      <span class='er identifier id'>er</span><span class='dot token'>.</span><span class='add_message identifier id'>add_message</span> <span class='dstring node'>&quot;Warning : Could not update record with id #{r[&quot;id&quot;]}. #{$!}\r\n&quot;</span>
-    <span class='end end kw'>end</span>
-  <span class='end end kw'>end</span>
-
-  <span class='if if kw'>if</span> <span class='updated identifier id'>updated</span><span class='dot token'>.</span><span class='length identifier id'>length</span> <span class='gt op'>&gt;</span> <span class='integer val'>0</span>
-    <span class='er identifier id'>er</span><span class='dot token'>.</span><span class='add_message identifier id'>add_message</span> <span class='dstring node'>&quot;Successfully updated #{updated.length} records with id : &quot;</span> <span class='plus op'>+</span> <span class='updated identifier id'>updated</span><span class='dot token'>.</span><span class='join identifier id'>join</span><span class='lparen token'>(</span><span class='string val'>', '</span><span class='rparen token'>)</span>
-    <span class='success identifier id'>success</span> <span class='assign token'>=</span> <span class='true true kw'>true</span>
-  <span class='else else kw'>else</span>
-    <span class='er identifier id'>er</span><span class='dot token'>.</span><span class='add_message identifier id'>add_message</span> <span class='string val'>&quot;No record updated.&quot;</span>
-    <span class='success identifier id'>success</span> <span class='assign token'>=</span> <span class='false false kw'>false</span>
-  <span class='end end kw'>end</span>
-
-  <span class='er identifier id'>er</span><span class='dot token'>.</span><span class='success identifier id'>success</span> <span class='assign token'>=</span> <span class='success identifier id'>success</span> 
-  <span class='er identifier id'>er</span><span class='dot token'>.</span><span class='to_hash identifier id'>to_hash</span>
-<span class='end end kw'>end</span>
-</pre>
-    </td>
-  </tr>
-</table>
-</div>
-    
-      <div class="method_details ">
-  <p class="signature " id="ext_update_record-instance_method">
-  
-    - (<tt>Hash</tt>) <strong>ext_update_record</strong>(record = {}, options = {}) 
-  
-
-  
-</p><div class="docstring">
-  <div class="discussion">
-    <p>
-Helper method : update a single record
-</p>
-
-
-  </div>
-</div>
-<div class="tags">
-  <h3>Parameters:</h3>
-<ul class="param">
-  
-    <li>
-      
-        <span class='type'>(<tt>Hash</tt>)</span>
-      
-      
-        <span class='name'>record</span>
-      
-      
-        <em class="default">(defaults to: <tt>{}</tt>)</em>
-      
-      
-        &mdash;
-        <div class='inline'><p>
-the record to update. It can contain a full record or just some attributes
-and an id
-</p>
-</div>
-      
-    </li>
-  
-    <li>
-      
-        <span class='type'>(<tt>optional Hash</tt>)</span>
-      
-      
-        <span class='name'>options</span>
-      
-      
-        <em class="default">(defaults to: <tt>{}</tt>)</em>
-      
-      
-        &mdash;
-        <div class='inline'><p>
-regarding record creation
-</p>
-</div>
-      
-    </li>
-  
-</ul>
-
-  
-    
-    
-    
-    
-    <h3>Options Hash (<tt>options</tt>):</h3>
-    <ul class="option">
-      
-        <li>
-          <span class="type">(<tt>String</tt>)</span>
-          <span class="name">:on_edit</span>
-          <span class="default">
-            
-              <span class="na">N/A</span>
-            
-          </span>
-          &mdash;<div class='inline'><p>
-&#8220;find_or_create&#8221; on a secondary model update, it will try to
-find an existing record with the value or will create a new one. 
-&#8220;force_create&#8221; will always result in a new record creation
-</p>
-</div>
-        </tr>
-      
-    </ul>
-  
-<h3>Returns:</h3>
-<ul class="return">
-  
-    <li>
-      
-        <span class='type'>(<tt>Hash</tt>)</span>
-      
-      
-      
-      
-        &mdash;
-        <div class='inline'><p>
-the attributes of the updated models with optional secondary models
-attributes.
-</p>
-</div>
-      
-    </li>
-  
-</ul>
-
-</div><table class="source_code">
-  <tr>
-    <td>
-      <pre class="lines">
-
-
-257
-258
-259
-260
-261
-262
-263
-264
-265
-266
-267
-268
-269
-270
-271
-272
-273
-274
-275
-276
-277
-278
-279
-280
-281
-282
-283
-284
-285
-286
-287
-288
-289
-290
-291
-292
-293
-294
-295
-296
-297
-298
-299
-300
-301
-302
-303
-304</pre>
-    </td>
-    <td>
-      <pre class="code"><span class="info file"># File 'lib/active_ext_api/active_ext_api.rb', line 257</span>
-
-<span class='def def kw'>def</span> <span class='ext_update_record identifier id'>ext_update_record</span><span class='lparen token'>(</span><span class='record identifier id'>record</span> <span class='assign token'>=</span> <span class='lbrace token'>{</span><span class='rbrace token'>}</span><span class='comma token'>,</span> <span class='options identifier id'>options</span> <span class='assign token'>=</span> <span class='lbrace token'>{</span><span class='rbrace token'>}</span><span class='rparen token'>)</span>
-  <span class='secondary_models identifier id'>secondary_models</span> <span class='assign token'>=</span> <span class='lbrack token'>[</span><span class='rbrack token'>]</span>
-  <span class='raise identifier id'>raise</span> <span class='string val'>&quot;Record is empty&quot;</span> <span class='if if_mod kw'>if</span> <span class='record identifier id'>record</span> <span class='eq op'>==</span> <span class='lbrace token'>{</span><span class='rbrace token'>}</span> 
-  <span class='ar identifier id'>ar</span> <span class='assign token'>=</span> <span class='self self kw'>self</span><span class='dot token'>.</span><span class='find identifier id'>find</span><span class='lparen token'>(</span><span class='record identifier id'>record</span><span class='lbrack token'>[</span><span class='string val'>&quot;id&quot;</span><span class='rbrack token'>]</span><span class='rparen token'>)</span>
-
-  <span class='record identifier id'>record</span><span class='dot token'>.</span><span class='each_pair identifier id'>each_pair</span> <span class='do do kw'>do</span> <span class='bitor op'>|</span><span class='key identifier id'>key</span><span class='comma token'>,</span> <span class='value identifier id'>value</span><span class='bitor op'>|</span>
-    <span class='key_array identifier id'>key_array</span> <span class='assign token'>=</span> <span class='key identifier id'>key</span><span class='dot token'>.</span><span class='split identifier id'>split</span><span class='lparen token'>(</span><span class='string val'>&quot;.&quot;</span><span class='rparen token'>)</span>
-    <span class='if if kw'>if</span><span class='lparen token'>(</span><span class='key_array identifier id'>key_array</span><span class='dot token'>.</span><span class='length identifier id'>length</span> <span class='gt op'>&gt;</span> <span class='integer val'>1</span><span class='rparen token'>)</span>
-      <span class='sm identifier id'>sm</span> <span class='assign token'>=</span> <span class='lparen token'>(</span><span class='key_array identifier id'>key_array</span><span class='lbrack token'>[</span><span class='integer val'>0</span><span class='comma token'>,</span> <span class='key_array identifier id'>key_array</span><span class='dot token'>.</span><span class='length identifier id'>length</span> <span class='minus op'>-</span> <span class='integer val'>1</span><span class='rbrack token'>]</span><span class='rparen token'>)</span>
-      <span class='secondary_models identifier id'>secondary_models</span><span class='dot token'>.</span><span class='push identifier id'>push</span> <span class='sm identifier id'>sm</span>
-
-      <span class='if if kw'>if</span> <span class='options identifier id'>options</span><span class='lbrack token'>[</span><span class='symbol val'>:on_edit</span><span class='rbrack token'>]</span> <span class='eq op'>==</span> <span class='string val'>&quot;find_or_create&quot;</span> 
-        <span class='comment val'>#try to find an existing model that match the new value </span>
-        <span class='comment val'>#TODO : this could be replace by find_or_create_by_xxxx</span>
-        <span class='m identifier id'>m</span> <span class='assign token'>=</span> <span class='Kernel constant id'>Kernel</span><span class='dot token'>.</span><span class='const_get identifier id'>const_get</span><span class='lparen token'>(</span><span class='sm identifier id'>sm</span><span class='lbrack token'>[</span><span class='minus op'>-</span> <span class='integer val'>1</span><span class='rbrack token'>]</span><span class='dot token'>.</span><span class='capitalize identifier id'>capitalize</span><span class='rparen token'>)</span><span class='dot token'>.</span><span class='find identifier id'>find</span><span class='lparen token'>(</span><span class='symbol val'>:first</span><span class='comma token'>,</span> <span class='lbrace token'>{</span><span class='symbol val'>:conditions</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='lbrace token'>{</span><span class='key_array identifier id'>key_array</span><span class='lbrack token'>[</span><span class='integer val'>-1</span><span class='rbrack token'>]</span><span class='dot token'>.</span><span class='to_sym identifier id'>to_sym</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='value identifier id'>value</span><span class='rbrace token'>}</span><span class='rbrace token'>}</span><span class='rparen token'>)</span>
-        <span class='if if kw'>if</span> <span class='notop op'>!</span><span class='m identifier id'>m</span>
-          <span class='sm_clone identifier id'>sm_clone</span> <span class='assign token'>=</span> <span class='sm identifier id'>sm</span><span class='dot token'>.</span><span class='clone identifier id'>clone</span>
-          <span class='sm_clone identifier id'>sm_clone</span><span class='dot token'>.</span><span class='push identifier id'>push</span> <span class='string val'>&quot;clone&quot;</span> 
-          <span class='m identifier id'>m</span> <span class='assign token'>=</span> <span class='call_func identifier id'>call_func</span><span class='lparen token'>(</span><span class='ar identifier id'>ar</span><span class='comma token'>,</span> <span class='sm_clone identifier id'>sm_clone</span><span class='rparen token'>)</span>
-        <span class='end end kw'>end</span>
-        <span class='call_func identifier id'>call_func</span><span class='lparen token'>(</span><span class='ar identifier id'>ar</span><span class='comma token'>,</span> <span class='sm identifier id'>sm</span><span class='comma token'>,</span> <span class='m identifier id'>m</span><span class='rparen token'>)</span>          <span class='comment val'># assign the new secondary model (replace the old)</span>
-
-      <span class='elsif elsif kw'>elsif</span> <span class='options identifier id'>options</span><span class='lbrack token'>[</span><span class='symbol val'>:on_edit</span><span class='rbrack token'>]</span> <span class='eq op'>==</span> <span class='string val'>&quot;force_create&quot;</span> <span class='comment val'># force create a new item</span>
-        <span class='sm_clone identifier id'>sm_clone</span> <span class='assign token'>=</span> <span class='sm identifier id'>sm</span><span class='dot token'>.</span><span class='clone identifier id'>clone</span>
-        <span class='sm_clone identifier id'>sm_clone</span><span class='dot token'>.</span><span class='push identifier id'>push</span> <span class='string val'>&quot;clone&quot;</span> 
-        <span class='m identifier id'>m</span> <span class='assign token'>=</span> <span class='call_func identifier id'>call_func</span><span class='lparen token'>(</span><span class='ar identifier id'>ar</span><span class='comma token'>,</span> <span class='sm_clone identifier id'>sm_clone</span><span class='rparen token'>)</span>
-        <span class='call_func identifier id'>call_func</span><span class='lparen token'>(</span><span class='ar identifier id'>ar</span><span class='comma token'>,</span> <span class='sm identifier id'>sm</span><span class='comma token'>,</span> <span class='m identifier id'>m</span><span class='rparen token'>)</span>  
-      <span class='end end kw'>end</span>
-
-    <span class='end end kw'>end</span>
-    <span class='call_func identifier id'>call_func</span><span class='lparen token'>(</span><span class='ar identifier id'>ar</span><span class='comma token'>,</span> <span class='key_array identifier id'>key_array</span><span class='comma token'>,</span> <span class='value identifier id'>value</span><span class='rparen token'>)</span>
-  <span class='end end kw'>end</span>
-  <span class='ar identifier id'>ar</span><span class='dot token'>.</span><span class='save identifier id'>save</span>                             <span class='comment val'>#save the primary model</span>
-
-  <span class='secondary_models identifier id'>secondary_models</span><span class='dot token'>.</span><span class='each identifier id'>each</span> <span class='do do kw'>do</span> <span class='bitor op'>|</span><span class='model identifier id'>model</span><span class='bitor op'>|</span>    <span class='comment val'>#save the secondary models</span>
-    <span class='model identifier id'>model</span><span class='dot token'>.</span><span class='push identifier id'>push</span><span class='lparen token'>(</span><span class='string val'>'save'</span><span class='rparen token'>)</span>
-    <span class='call_func identifier id'>call_func</span><span class='lparen token'>(</span><span class='ar identifier id'>ar</span><span class='comma token'>,</span> <span class='model identifier id'>model</span><span class='rparen token'>)</span>
-  <span class='end end kw'>end</span>
-
-  <span class='s identifier id'>s</span> <span class='assign token'>=</span> <span class='ar identifier id'>ar</span><span class='dot token'>.</span><span class='attributes identifier id'>attributes</span>
-  <span class='if if kw'>if</span><span class='lparen token'>(</span><span class='options identifier id'>options</span><span class='lbrack token'>[</span><span class='symbol val'>:include</span><span class='rbrack token'>]</span> <span class='neq op'>!=</span> <span class='nil nil kw'>nil</span><span class='rparen token'>)</span>        <span class='comment val'># add assotiations if requested {attr_id, attr : {id: ...</span>
-    <span class='options identifier id'>options</span><span class='lbrack token'>[</span><span class='symbol val'>:include</span><span class='rbrack token'>]</span><span class='dot token'>.</span><span class='each identifier id'>each</span> <span class='do do kw'>do</span> <span class='bitor op'>|</span><span class='j identifier id'>j</span><span class='bitor op'>|</span>
-      <span class='s identifier id'>s</span><span class='lbrack token'>[</span><span class='j identifier id'>j</span><span class='rbrack token'>]</span> <span class='assign token'>=</span> <span class='ar identifier id'>ar</span><span class='dot token'>.</span><span class='send identifier id'>send</span><span class='lparen token'>(</span><span class='j identifier id'>j</span><span class='rparen token'>)</span><span class='dot token'>.</span><span class='attributes identifier id'>attributes</span>
-    <span class='end end kw'>end</span>
-  <span class='end end kw'>end</span>
-
-  <span class='s identifier id'>s</span>  
-<span class='end end kw'>end</span>
-</pre>
-    </td>
-  </tr>
-</table>
-</div>
-    
-      <div class="method_details ">
-  <p class="signature " id="filter_sort-instance_method">
-  
-    - (<tt>Hash</tt>) <strong>filter_sort</strong>(opts = {}) 
-  
-
-  
-</p><div class="docstring">
-  <div class="discussion">
-    <p>
-Transform Ext provided :sort / :dir options into rail&#8217;s :order
-options
-</p>
-
-
-  </div>
-</div>
-<div class="tags">
-  
-  <div class="examples">
-    <h3>Examples:</h3>
-    
-      <h4><div class='inline'></div></h4>
-      <pre class="example code"><span class='filter_sort identifier id'>filter_sort</span><span class='lparen token'>(</span><span class='lbrace token'>{</span><span class='symbol val'>:sort</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>&quot;name&quot;</span><span class='comma token'>,</span> <span class='symbol val'>:dir=</span><span class='gt op'>&gt;</span> <span class='string val'>&quot;ASC&quot;</span><span class='rbrace token'>}</span><span class='rparen token'>)</span> <span class='comment val'>#=&gt; {:order =&gt; &quot;name ASC&quot;}</span>
-</pre>
-    
-      <h4><div class='inline'></div></h4>
-      <pre class="example code"><span class='filter_sort identifier id'>filter_sort</span><span class='lparen token'>(</span><span class='lbrace token'>{</span><span class='symbol val'>:sort</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='lbrack token'>[</span><span class='lbrace token'>{</span><span class='symbol val'>:sort=</span><span class='gt op'>&gt;</span><span class='string val'>&quot;name&quot;</span><span class='comma token'>,</span> <span class='symbol val'>:dir=</span><span class='gt op'>&gt;</span><span class='string val'>&quot;ASC&quot;</span><span class='rbrace token'>}</span><span class='comma token'>,</span> <span class='lbrace token'>{</span><span class='symbol val'>:sort=</span><span class='gt op'>&gt;</span><span class='string val'>&quot;country&quot;</span><span class='comma token'>,</span> <span class='symbol val'>:dir=</span><span class='gt op'>&gt;</span><span class='string val'>&quot;DESC&quot;</span><span class='rbrace token'>}</span><span class='rbrack token'>]</span><span class='rparen token'>)</span> <span class='comment val'>#=&gt; {:order =&gt; &quot;name ASC, country DESC&quot;}</span>
-</pre>
-    
-  </div>
-<h3>Parameters:</h3>
-<ul class="param">
-  
-    <li>
-      
-        <span class='type'>(<tt>Hash</tt>)</span>
-      
-      
-        <span class='name'>the</span>
-      
-      
-      
-        &mdash;
-        <div class='inline'><p>
-options used to find records
-</p>
-</div>
-      
-    </li>
-  
-    <li>
-      
-        <span class='type'>(<tt>Hash</tt>)</span>
-      
-      
-        <span class='name'>opts</span>
-      
-      
-        <em class="default">(defaults to: <tt>{}</tt>)</em>
-      
-      
-        &mdash;
-        <div class='inline'><p>
-a customizable set of options
-</p>
-</div>
-      
-    </li>
-  
-</ul>
-
-  
-    
-    
-    <h3>Options Hash (<tt>opts</tt>):</h3>
-    <ul class="option">
-      
-        <li>
-          <span class="type">(<tt>String</tt>)</span>
-          <span class="name">:sort</span>
-          <span class="default">
-            
-              <span class="na">N/A</span>
-            
-          </span>
-          &mdash;<div class='inline'><p>
-the attributes that must be used to sort
-</p>
-</div>
-        </tr>
-      
-        <li>
-          <span class="type">(<tt>String</tt>)</span>
-          <span class="name">:dir</span>
-          <span class="default">
-            
-              <span class="na">N/A</span>
-            
-          </span>
-          &mdash;<div class='inline'><p>
-the direction of the sort
-</p>
-</div>
-        </tr>
-      
-    </ul>
-  
-<h3>Returns:</h3>
-<ul class="return">
-  
-    <li>
-      
-        <span class='type'>(<tt>Hash</tt>)</span>
-      
-      
-      
-      
-        &mdash;
-        <div class='inline'><p>
-the provided options with :sort/:dir replaced by :order
-</p>
-</div>
-      
-    </li>
-  
-</ul>
-
-</div><table class="source_code">
-  <tr>
-    <td>
-      <pre class="lines">
-
-
-120
-121
-122
-123
-124
-125
-126
-127
-128
-129
-130
-131
-132
-133
-134
-135
-136
-137
-138</pre>
-    </td>
-    <td>
-      <pre class="code"><span class="info file"># File 'lib/active_ext_api/active_ext_api.rb', line 120</span>
-
-<span class='def def kw'>def</span> <span class='filter_sort identifier id'>filter_sort</span><span class='lparen token'>(</span><span class='opts identifier id'>opts</span><span class='assign token'>=</span> <span class='lbrace token'>{</span><span class='rbrace token'>}</span><span class='rparen token'>)</span>
-  <span class='if if kw'>if</span> <span class='opts identifier id'>opts</span><span class='lbrack token'>[</span><span class='symbol val'>:sort</span><span class='rbrack token'>]</span> <span class='neq op'>!=</span> <span class='nil nil kw'>nil</span>
-    <span class='if if kw'>if</span><span class='lparen token'>(</span><span class='opts identifier id'>opts</span><span class='lbrack token'>[</span><span class='symbol val'>:sort</span><span class='rbrack token'>]</span><span class='dot token'>.</span><span class='kind_of? fid id'>kind_of?</span> <span class='Array constant id'>Array</span><span class='rparen token'>)</span>
-      <span class='s identifier id'>s</span> <span class='assign token'>=</span> <span class='lbrack token'>[</span><span class='rbrack token'>]</span>
-      <span class='opts identifier id'>opts</span><span class='lbrack token'>[</span><span class='symbol val'>:sort</span><span class='rbrack token'>]</span><span class='dot token'>.</span><span class='each identifier id'>each</span> <span class='do do kw'>do</span> <span class='bitor op'>|</span><span class='sort identifier id'>sort</span><span class='bitor op'>|</span>
-        <span class='sort_name identifier id'>sort_name</span> <span class='assign token'>=</span> <span class='sort identifier id'>sort</span><span class='lbrack token'>[</span><span class='symbol val'>:sort</span><span class='rbrack token'>]</span><span class='dot token'>.</span><span class='split identifier id'>split</span><span class='lparen token'>(</span><span class='string val'>&quot;.&quot;</span><span class='rparen token'>)</span>
-
-        <span class='s identifier id'>s</span><span class='dot token'>.</span><span class='push identifier id'>push</span> <span class='dstring node'>&quot;#{filter_sort_tables sort[:sort]} #{sort[:dir]}&quot;</span>
-      <span class='end end kw'>end</span>
-      <span class='opts identifier id'>opts</span><span class='dot token'>.</span><span class='delete identifier id'>delete</span> <span class='symbol val'>:sort</span>
-      <span class='opts identifier id'>opts</span><span class='lbrack token'>[</span><span class='symbol val'>:order</span><span class='rbrack token'>]</span> <span class='assign token'>=</span> <span class='s identifier id'>s</span><span class='dot token'>.</span><span class='join identifier id'>join</span><span class='lparen token'>(</span><span class='string val'>&quot;,&quot;</span><span class='rparen token'>)</span>
-    <span class='else else kw'>else</span>
-      <span class='sort identifier id'>sort</span><span class='assign token'>=</span> <span class='opts identifier id'>opts</span><span class='dot token'>.</span><span class='delete identifier id'>delete</span> <span class='symbol val'>:sort</span>
-      <span class='dir identifier id'>dir</span> <span class='assign token'>=</span> <span class='opts identifier id'>opts</span><span class='dot token'>.</span><span class='delete identifier id'>delete</span> <span class='symbol val'>:dir</span> <span class='orop op'>||</span> <span class='string val'>&quot;ASC&quot;</span>
-      <span class='opts identifier id'>opts</span><span class='lbrack token'>[</span><span class='symbol val'>:order</span><span class='rbrack token'>]</span> <span class='assign token'>=</span> <span class='dstring node'>&quot;#{filter_sort_tables sort} #{dir}&quot;</span>
-    <span class='end end kw'>end</span>
-  <span class='end end kw'>end</span>
-  <span class='opts identifier id'>opts</span> 
-<span class='end end kw'>end</span>
-</pre>
-    </td>
-  </tr>
-</table>
-</div>
-    
-      <div class="method_details ">
-  <p class="signature " id="filter_sort_tables-instance_method">
-  
-    - (<tt>Object</tt>) <strong>filter_sort_tables</strong>(v) 
-  
-
-  
-</p><div class="docstring">
-  <div class="discussion">
-    <p>
-Transform a request to sort on a linked model into the table names
-</p>
-
-
-  </div>
-</div>
-<div class="tags">
-  
-  <div class="examples">
-    <h3>Examples:</h3>
-    
-      <h4><div class='inline'></div></h4>
-      <pre class="example code"><span class='filter_sort_tables identifier id'>filter_sort_tables</span> <span class='string val'>&quot;artist.name&quot;</span> <span class='comment val'>#=&gt; &quot;artists.name&quot;</span>
-</pre>
-    
-      <h4><div class='inline'></div></h4>
-      <pre class="example code"><span class='filter_sort_tables identifier id'>filter_sort_tables</span> <span class='string val'>&quot;artist.country.name&quot;</span> <span class='comment val'>#=&gt; &quot;countries.name&quot;</span>
-</pre>
-    
-  </div>
-<h3>Parameters:</h3>
-<ul class="param">
-  
-    <li>
-      
-        <span class='type'>(<tt>String</tt>)</span>
-      
-      
-        <span class='name'>v</span>
-      
-      
-      
-        &mdash;
-        <div class='inline'><p>
-a sort options provided by Ext
-</p>
-</div>
-      
-    </li>
-  
-</ul>
-<h3>Returns:</h3>
-<ul class="return">
-  
-    <li>
-      
-        <span class='type'></span>
-      
-      
-      
-      
-        
-        <div class='inline'><p>
-the name of the attributes prefixed with a table name
-</p>
-</div>
-      
-    </li>
-  
-</ul>
-
-</div><table class="source_code">
-  <tr>
-    <td>
-      <pre class="lines">
-
-
-100
-101
-102
-103
-104
-105
-106
-107</pre>
-    </td>
-    <td>
-      <pre class="code"><span class="info file"># File 'lib/active_ext_api/active_ext_api.rb', line 100</span>
-
-<span class='def def kw'>def</span> <span class='filter_sort_tables identifier id'>filter_sort_tables</span><span class='lparen token'>(</span><span class='v identifier id'>v</span><span class='rparen token'>)</span>
-  <span class='a identifier id'>a</span> <span class='assign token'>=</span> <span class='v identifier id'>v</span><span class='dot token'>.</span><span class='split identifier id'>split</span><span class='lparen token'>(</span><span class='string val'>&quot;.&quot;</span><span class='rparen token'>)</span>
-  <span class='if if kw'>if</span> <span class='a identifier id'>a</span><span class='dot token'>.</span><span class='length identifier id'>length</span> <span class='eq op'>==</span> <span class='integer val'>1</span>
-    <span class='return return kw'>return</span> <span class='a identifier id'>a</span><span class='lbrack token'>[</span><span class='integer val'>0</span><span class='rbrack token'>]</span>
-  <span class='end end kw'>end</span>
-  <span class='a identifier id'>a</span><span class='lbrack token'>[</span><span class='integer val'>-2</span><span class='rbrack token'>]</span><span class='assign token'>=</span> <span class='a identifier id'>a</span><span class='lbrack token'>[</span><span class='integer val'>-2</span><span class='rbrack token'>]</span><span class='dot token'>.</span><span class='pluralize identifier id'>pluralize</span>
-  <span class='a identifier id'>a</span><span class='lbrack token'>[</span><span class='integer val'>-2</span><span class='comma token'>,</span><span class='integer val'>2</span><span class='rbrack token'>]</span><span class='dot token'>.</span><span class='join identifier id'>join</span><span class='lparen token'>(</span><span class='string val'>&quot;.&quot;</span><span class='rparen token'>)</span>
-<span class='end end kw'>end</span>
-</pre>
-    </td>
-  </tr>
-</table>
-</div>
-    
-      <div class="method_details ">
-  <p class="signature " id="filter_unsupported_options-instance_method">
-  
-    - (<tt>Hash</tt>) <strong>filter_unsupported_options</strong>(sym, options = {}) 
-  
-
-  
-</p><div class="docstring">
-  <div class="discussion">
-    <p>
-Filter the unsupported options that can be used in certain api method but
-not others
-</p>
-
-
-  </div>
-</div>
-<div class="tags">
-  <h3>Parameters:</h3>
-<ul class="param">
-  
-    <li>
-      
-        <span class='type'>(<tt>Symbol</tt>)</span>
-      
-      
-        <span class='name'>sym</span>
-      
-      
-      
-        &mdash;
-        <div class='inline'><p>
-the name of the method
-</p>
-</div>
-      
-    </li>
-  
-    <li>
-      
-        <span class='type'>(<tt>Hash</tt>)</span>
-      
-      
-        <span class='name'>options</span>
-      
-      
-        <em class="default">(defaults to: <tt>{}</tt>)</em>
-      
-      
-        &mdash;
-        <div class='inline'><p>
-an options hash
-</p>
-</div>
-      
-    </li>
-  
-</ul>
-<h3>Returns:</h3>
-<ul class="return">
-  
-    <li>
-      
-        <span class='type'>(<tt>Hash</tt>)</span>
-      
-      
-      
-      
-        &mdash;
-        <div class='inline'><p>
-return options without any options not defined in EXT_SUPPORTED_OPTIONS
-</p>
-</div>
-      
-    </li>
-  
-</ul>
-
-</div><table class="source_code">
-  <tr>
-    <td>
-      <pre class="lines">
-
-
-44
-45
-46
-47
-48</pre>
-    </td>
-    <td>
-      <pre class="code"><span class="info file"># File 'lib/active_ext_api/active_ext_api.rb', line 44</span>
-
-<span class='def def kw'>def</span> <span class='filter_unsupported_options identifier id'>filter_unsupported_options</span><span class='lparen token'>(</span><span class='sym identifier id'>sym</span><span class='comma token'>,</span> <span class='options identifier id'>options</span> <span class='assign token'>=</span> <span class='lbrace token'>{</span><span class='rbrace token'>}</span><span class='rparen token'>)</span> 
-  <span class='options identifier id'>options</span><span class='dot token'>.</span><span class='delete_if identifier id'>delete_if</span> <span class='do do kw'>do</span> <span class='bitor op'>|</span><span class='key identifier id'>key</span><span class='comma token'>,</span> <span class='value identifier id'>value</span><span class='bitor op'>|</span>
-    <span class='notop op'>!</span><span class='EXT_SUPPORTED_OPTIONS constant id'>EXT_SUPPORTED_OPTIONS</span><span class='lbrack token'>[</span><span class='sym identifier id'>sym</span><span class='rbrack token'>]</span><span class='dot token'>.</span><span class='include? fid id'>include?</span> <span class='key identifier id'>key</span>
-  <span class='end end kw'>end</span>
-<span class='end end kw'>end</span>
-</pre>
-    </td>
-  </tr>
-</table>
-</div>
-    
-      <div class="method_details ">
-  <p class="signature " id="get_total_count-instance_method">
-  
-    - (<tt>Integer</tt>) <strong>get_total_count</strong>(opts = {}) 
-  
-
-  
-</p><div class="docstring">
-  <div class="discussion">
-    <p>
-Get the total count for a find query ignoring limits
-</p>
-
-
-  </div>
-</div>
-<div class="tags">
-  <h3>Parameters:</h3>
-<ul class="param">
-  
-    <li>
-      
-        <span class='type'>(<tt>Hash</tt>)</span>
-      
-      
-        <span class='name'>opts</span>
-      
-      
-        <em class="default">(defaults to: <tt>{}</tt>)</em>
-      
-      
-        &mdash;
-        <div class='inline'><p>
-the options for a ActiveRecord::Base.find call
-</p>
-</div>
-      
-    </li>
-  
-</ul>
-<h3>Returns:</h3>
-<ul class="return">
-  
-    <li>
-      
-        <span class='type'>(<tt>Integer</tt>)</span>
-      
-      
-      
-      
-        &mdash;
-        <div class='inline'><p>
-the total number of rows for the query ignoring limit and offset
-</p>
-</div>
-      
-    </li>
-  
-</ul>
-
-</div><table class="source_code">
-  <tr>
-    <td>
-      <pre class="lines">
-
-
-53
-54
-55
-56
-57
-58
-59</pre>
-    </td>
-    <td>
-      <pre class="code"><span class="info file"># File 'lib/active_ext_api/active_ext_api.rb', line 53</span>
-
-<span class='def def kw'>def</span> <span class='get_total_count identifier id'>get_total_count</span><span class='lparen token'>(</span><span class='opts identifier id'>opts</span> <span class='assign token'>=</span> <span class='lbrace token'>{</span><span class='rbrace token'>}</span><span class='rparen token'>)</span> 
-    <span class='opts identifier id'>opts</span><span class='lbrack token'>[</span><span class='symbol val'>:limit</span><span class='rbrack token'>]</span> <span class='assign token'>=</span> <span class='nil nil kw'>nil</span>
-    <span class='opts identifier id'>opts</span><span class='lbrack token'>[</span><span class='symbol val'>:offset</span><span class='rbrack token'>]</span> <span class='assign token'>=</span> <span class='nil nil kw'>nil</span>
-    <span class='opts identifier id'>opts</span><span class='lbrack token'>[</span><span class='symbol val'>:select</span><span class='rbrack token'>]</span> <span class='assign token'>=</span> <span class='string val'>&quot;count(*)&quot;</span>
-    <span class='sql_count identifier id'>sql_count</span> <span class='assign token'>=</span> <span class='construct_finder_sql identifier id'>construct_finder_sql</span><span class='lparen token'>(</span><span class='opts identifier id'>opts</span><span class='rparen token'>)</span>
-    <span class='count_by_sql identifier id'>count_by_sql</span><span class='lparen token'>(</span><span class='sql_count identifier id'>sql_count</span><span class='rparen token'>)</span>
+  <span class='ext_api identifier id'>ext_api</span> <span class='assign token'>=</span> <span class='ActiveExtAPI constant id'>ActiveExtAPI</span><span class='colon2 op'>::</span><span class='StoreUpdate constant id'>StoreUpdate</span><span class='dot token'>.</span><span class='new identifier id'>new</span> <span class='self self kw'>self</span>
+  <span class='ext_api identifier id'>ext_api</span><span class='dot token'>.</span><span class='update identifier id'>update</span> <span class='opts identifier id'>opts</span>
 <span class='end end kw'>end</span>
 </pre>
     </td>
@@ -2305,7 +1179,7 @@ the total number of rows for the query ignoring limit and offset
 </div>
     
     <div id="footer">
-  Generated on Mon Aug 23 08:58:47 2010 by 
+  Generated on Sun Aug 29 12:18:26 2010 by 
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool">yard</a>
   0.5.8 (ruby-1.8.7).
 </div>

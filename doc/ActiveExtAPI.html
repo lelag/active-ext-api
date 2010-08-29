@@ -59,7 +59,9 @@
   
   
     <dt class="r1 last">Defined in:</dt>
-    <dd class="r1 last">lib/active_ext_api/active_ext_api.rb</dd>
+    <dd class="r1 last">lib/active_ext_api/active_ext_api.rb<span class="defines">,<br />
+  lib/active_ext_api/base.rb,<br /> lib/active_ext_api/tree.rb,<br /> lib/active_ext_api/store_read.rb,<br /> lib/active_ext_api/store_create.rb,<br /> lib/active_ext_api/ext_response.rb,<br /> lib/active_ext_api/store_update.rb,<br /> lib/active_ext_api/store_destroy.rb</span>
+</dd>
   
 </dl>
 <div class="clear"></div>
@@ -108,6 +110,8 @@ Le Lag
     
    
     
+      <strong class="classes">Classes:</strong> <a href="ActiveExtAPI/ActiveExtAPIError.html" title="ActiveExtAPI::ActiveExtAPIError (class)">ActiveExtAPIError</a>, <a href="ActiveExtAPI/Base.html" title="ActiveExtAPI::Base (class)">Base</a>, <a href="ActiveExtAPI/ExtResponse.html" title="ActiveExtAPI::ExtResponse (class)">ExtResponse</a>, <a href="ActiveExtAPI/StoreCreate.html" title="ActiveExtAPI::StoreCreate (class)">StoreCreate</a>, <a href="ActiveExtAPI/StoreDestroy.html" title="ActiveExtAPI::StoreDestroy (class)">StoreDestroy</a>, <a href="ActiveExtAPI/StoreRead.html" title="ActiveExtAPI::StoreRead (class)">StoreRead</a>, <a href="ActiveExtAPI/StoreUpdate.html" title="ActiveExtAPI::StoreUpdate (class)">StoreUpdate</a>, <a href="ActiveExtAPI/Tree.html" title="ActiveExtAPI::Tree (class)">Tree</a>
+    
   
 </p>
 
@@ -118,17 +122,7 @@ Le Lag
         <dt id="DEFAULT_METHODS-constant" class="">DEFAULT_METHODS =
           
         </dt>
-        <dd><pre class="code"><span class='lbrace token'>{</span> <span class='string val'>'ext_read'</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='integer val'>1</span><span class='comma token'>,</span> <span class='string val'>'ext_create'</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='integer val'>1</span><span class='comma token'>,</span> <span class='string val'>'ext_update'</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='integer val'>1</span><span class='comma token'>,</span> <span class='string val'>'ext_destroy'</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='integer val'>1</span> <span class='rbrace token'>}</span>
-</pre></dd>
-      
-        <dt id="EXT_SUPPORTED_OPTIONS-constant" class="">EXT_SUPPORTED_OPTIONS =
-          
-        </dt>
-        <dd><pre class="code"><span class='lbrace token'>{</span>
-<span class='symbol val'>:ext_read</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='lbrack token'>[</span><span class='symbol val'>:limit</span><span class='comma token'>,</span> <span class='symbol val'>:offset</span><span class='comma token'>,</span> <span class='symbol val'>:start</span><span class='comma token'>,</span> <span class='symbol val'>:sort</span><span class='comma token'>,</span> <span class='symbol val'>:dir</span><span class='comma token'>,</span> <span class='symbol val'>:conditions</span><span class='comma token'>,</span> <span class='symbol val'>:order</span><span class='comma token'>,</span> <span class='symbol val'>:group</span><span class='comma token'>,</span> <span class='symbol val'>:having</span><span class='comma token'>,</span> <span class='symbol val'>:joins</span><span class='comma token'>,</span> <span class='symbol val'>:include</span><span class='comma token'>,</span> <span class='symbol val'>:select</span><span class='comma token'>,</span> <span class='symbol val'>:from</span><span class='comma token'>,</span> <span class='symbol val'>:readonly</span><span class='comma token'>,</span> <span class='symbol val'>:lock</span><span class='rbrack token'>]</span><span class='comma token'>,</span>
-<span class='symbol val'>:ext_create</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='lbrack token'>[</span><span class='symbol val'>:data</span><span class='rbrack token'>]</span><span class='comma token'>,</span>
-<span class='symbol val'>:ext_update</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='lbrack token'>[</span><span class='symbol val'>:data</span><span class='comma token'>,</span> <span class='symbol val'>:on_edit</span><span class='rbrack token'>]</span><span class='comma token'>,</span>
-<span class='symbol val'>:ext_destroy</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='lbrack token'>[</span><span class='symbol val'>:data</span><span class='rbrack token'>]</span> <span class='rbrace token'>}</span>
+        <dd><pre class="code"><span class='lbrace token'>{</span> <span class='string val'>'ext_read'</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='integer val'>1</span><span class='comma token'>,</span> <span class='string val'>'ext_create'</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='integer val'>1</span><span class='comma token'>,</span> <span class='string val'>'ext_update'</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='integer val'>1</span><span class='comma token'>,</span> <span class='string val'>'ext_destroy'</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='integer val'>1</span><span class='comma token'>,</span> <span class='string val'>'ext_get_nodes'</span><span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='integer val'>2</span> <span class='rbrace token'>}</span>
 </pre></dd>
       
     </dl>
@@ -195,12 +189,12 @@ Le Lag
       <pre class="lines">
 
 
-17
-18
-19</pre>
+12
+13
+14</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/active_ext_api/active_ext_api.rb', line 17</span>
+      <pre class="code"><span class="info file"># File 'lib/active_ext_api/active_ext_api.rb', line 12</span>
 
 <span class='def def kw'>def</span> <span class='self self kw'>self</span><span class='dot token'>.</span><span class='included identifier id'>included</span><span class='lparen token'>(</span><span class='base identifier id'>base</span><span class='rparen token'>)</span>
   <span class='base identifier id'>base</span><span class='dot token'>.</span><span class='send identifier id'>send</span> <span class='symbol val'>:extend</span><span class='comma token'>,</span> <span class='ClassMethods constant id'>ClassMethods</span>
@@ -216,7 +210,7 @@ Le Lag
 </div>
     
     <div id="footer">
-  Generated on Mon Aug 23 08:58:47 2010 by 
+  Generated on Sun Aug 29 12:18:27 2010 by 
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool">yard</a>
   0.5.8 (ruby-1.8.7).
 </div>
