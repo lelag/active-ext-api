@@ -1,6 +1,6 @@
 require File.dirname(__FILE__) + '/../spec_helper'
 
-describe "ActiveExtAPI::ClassMethods.ext_update" do
+describe ActiveExtAPI::ClassMethods, "ext_update" do
 
   context "with no argument" do
     it "should raise an error" do 

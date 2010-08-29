@@ -1,5 +1,5 @@
 require File.dirname(__FILE__) + '/../spec_helper'
-describe "ActiveExtAPI::ClassMethods.ext_create" do
+describe ActiveExtAPI::ClassMethods, "ext_create" do
   before(:each) do
     
   end

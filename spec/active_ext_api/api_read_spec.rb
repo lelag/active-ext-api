@@ -1,6 +1,6 @@
 require File.dirname(__FILE__) + '/../spec_helper'
 
-describe "ActiveExtAPI::ClassMethods.ext_read" do
+describe ActiveExtAPI::ClassMethods, "ext_read" do
   before(:each) do
     
   end

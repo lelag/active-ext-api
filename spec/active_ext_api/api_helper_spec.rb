@@ -10,9 +10,9 @@ module ActiveDirect
 end
 
 require File.dirname(__FILE__) + '/../spec_helper'
-describe ActiveExtAPI::StoreRead, " helper methods" do
+describe ActiveExtAPI::StoreRead, "helper methods" do
 
-  context "method filter_sort_tables" do
+  context "filter_sort_tables" do
     it "should transform a string send by ext :sort into tables name" do
         r = ActiveExtAPI::StoreRead.new Book
         r.filter_sort_tables("name").should == "name"
@@ -24,7 +24,7 @@ end
 
 
 describe ActiveExtAPI::Base, "helper methods" do
-  context "method call_func" do
+  context "call_func" do
     it "should set a property on a chain of Active Directory association" do
       loan = double()
       book = double()

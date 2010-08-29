@@ -1,6 +1,6 @@
 require File.dirname(__FILE__) + '/../spec_helper'
 
-describe "ActiveExtAPI::ExtResponse" do
+describe ActiveExtAPI::ExtResponse do
   before(:each) do
     @r = ActiveExtAPI::ExtResponse.new
   end

@@ -1,7 +1,6 @@
 require File.dirname(__FILE__) + '/../spec_helper'
-require 'pp'
 
-describe "ActiveExtAPI::ClassMethods.ext_destroy" do
+describe ActiveExtAPI::ClassMethods, "ext_destroy" do
   context "with no :data argument" do
     it "should raise an error"  do
       lambda { Book.ext_destroy }.should raise_error
