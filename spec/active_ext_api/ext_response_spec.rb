@@ -2,7 +2,7 @@ require File.dirname(__FILE__) + '/../spec_helper'
 
 describe "ActiveExtAPI::ExtResponse" do
   before(:each) do
-    @r = ExtResponse.new
+    @r = ActiveExtAPI::ExtResponse.new
   end
   context "initialize" do 
     it "should default to true" do
