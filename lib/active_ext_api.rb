@@ -1,3 +1,9 @@
 # active-ext-api
-require 'active_ext_api/active_ext_api'
 require 'active_ext_api/ext_response'
+require 'active_ext_api/base'
+require 'active_ext_api/store_read'
+require 'active_ext_api/store_create'
+require 'active_ext_api/store_update'
+require 'active_ext_api/store_destroy'
+require 'active_ext_api/tree'
+require 'active_ext_api/active_ext_api'
