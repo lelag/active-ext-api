@@ -177,8 +177,11 @@ end
       r[:text].should == b.title
     end
 
-    it "should return leaf:true when a recursive call is last in chain"
-
-
+    it "should return leaf:true when a recursive call is last in chain" do
+      r = Book.ext_get_nodes("0_Book_3?hur", @baseParams)
+      r.count.should == 1
+      r = r[0] 
+      r[:leaf].should == true
+    end
   end
 end

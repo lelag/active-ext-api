@@ -26,6 +26,9 @@ The 4 CRUD method the plugin provides are :
   - ext_update
   - ext_destroy
 
+An extra api method is also provided to populate Ext Trees.
+  - ext_get_nodes
+
 Notes : 
 - ext_read supports most of the options taken by ActiveRecord::Base.find(:all, options = {})
 - sorting is done through the Ext compliant :sort, :dir options
@@ -95,7 +98,6 @@ if you want to include a linked secondary model :
 
 you would then be able to display a book's author name 
 by seting up a field "author.name" in your record.
-
 
 
 Copyright (c) 2010 Le Lag, released under the MIT license
