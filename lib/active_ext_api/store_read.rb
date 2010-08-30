@@ -11,9 +11,7 @@ module ActiveExtAPI
         opts[:limit] = nil
         opts[:offset] = nil
         opts[:order] = nil
-        opts[:select] = "count(*)"
-        sql_count = @active_record_model._ext_api_construct_finder_sql(opts)
-        @active_record_model.count_by_sql(sql_count)
+        @active_record_model.count(opts)
     end
 
     # Transform a request to sort on a linked model into the table names

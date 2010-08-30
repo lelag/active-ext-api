@@ -32,12 +32,6 @@ module ActiveExtAPI
         end
     end
 
-    # Private proxy for private ActiveRecord method construct_finder_sql
-    def _ext_api_construct_finder_sql(opts = {})
-      construct_finder_sql(opts)
-    end
-
-    
     # Return a list of records that can be used to load an ExtJS Store
     #
     # ActiveRecord alias to ActiveExtAPI::Read.read
