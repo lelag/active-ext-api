@@ -29,6 +29,10 @@ The 4 CRUD method the plugin provides are :
 An extra api method is also provided to populate Ext Trees.
   - ext_get_nodes
 
+A Form API also handles Form loading and submit
+  - ext_form_load
+  - ext_form_submit (Not implemented yet)
+
 Notes : 
 - ext_read supports most of the options taken by ActiveRecord::Base.find(:all, options = {})
 - sorting is done through the Ext compliant :sort, :dir options

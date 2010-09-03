@@ -1,0 +1,841 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+  <head>
+    <meta name="Content-Type" content="text/html; charset=utf-8" />
+<title>Class: ActiveExtAPI::Base</title>
+<link rel="stylesheet" href="../css/style.css" type="text/css" media="screen" charset="utf-8" />
+<link rel="stylesheet" href="../css/common.css" type="text/css" media="screen" charset="utf-8" />
+
+<script type="text/javascript" charset="utf-8">
+  relpath = '..';
+  if (relpath != '') relpath += '/';
+</script>
+<script type="text/javascript" charset="utf-8" src="../js/jquery.js"></script>
+<script type="text/javascript" charset="utf-8" src="../js/app.js"></script>
+
+  </head>
+  <body>
+    <script type="text/javascript" charset="utf-8">
+      if (window.top.frames.main) document.body.className = 'frames';
+    </script>
+    
+    <div id="header">
+      <div id="menu">
+  
+    <a href="../_index.html">Index (B)</a> &raquo; 
+    <span class='title'><a href="../ActiveExtAPI.html" title="ActiveExtAPI (module)">ActiveExtAPI</a></span>
+     &raquo; 
+    <span class="title">Base</span>
+  
+  
+  <div class="noframes"><span class="title">(</span><a href="." target="_top">no frames</a><span class="title">)</span></div>
+</div>
+
+      <div id="search">
+  <a id="class_list_link" href="#">Class List</a>
+  <a id="method_list_link" href="#">Method List</a>
+  <a id ="file_list_link" href="#">File List</a>
+</div>
+
+      <div class="clear"></div>
+    </div>
+    
+    <iframe id="search_frame"></iframe>
+    
+    <div id="content"><h1>Class: ActiveExtAPI::Base
+  
+  
+  
+</h1>
+
+<dl class="box">
+  
+    <dt class="r1">Inherits:</dt>
+    <dd class="r1">
+      <span class="inheritName">Object</span>
+      
+        <ul class="fullTree">
+          <li>Object</li>
+          
+            <li class="next">ActiveExtAPI::Base</li>
+          
+        </ul>
+        <a href="#" class="inheritanceTree">show all</a>
+      
+      </dd>
+    
+  
+  
+    
+  
+    
+  
+  
+  
+    <dt class="r2 last">Defined in:</dt>
+    <dd class="r2 last">lib/active_ext_api/base.rb</dd>
+  
+</dl>
+<div class="clear"></div>
+
+<h2>Overview</h2><div class="docstring">
+  <div class="discussion">
+    <p>
+Base Class for Active Ext API
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <h3>Author:</h3>
+<ul class="author">
+  
+    <li>
+      
+      
+      
+      
+        
+        <div class='inline'><p>
+Le Lag
+</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><div id="subclasses">
+  <h2>Direct Known Subclasses</h2>
+  <p class="children"><a href="Form.html" title="ActiveExtAPI::Form (class)">Form</a>, <a href="StoreCreate.html" title="ActiveExtAPI::StoreCreate (class)">StoreCreate</a>, <a href="StoreDestroy.html" title="ActiveExtAPI::StoreDestroy (class)">StoreDestroy</a>, <a href="StoreRead.html" title="ActiveExtAPI::StoreRead (class)">StoreRead</a>, <a href="StoreUpdate.html" title="ActiveExtAPI::StoreUpdate (class)">StoreUpdate</a>, <a href="Tree.html" title="ActiveExtAPI::Tree (class)">Tree</a></p>
+</div>
+
+  <h2>Constant Summary</h2>
+  
+    <dl class="constants">
+      
+        <dt id="EXT_SUPPORTED_OPTIONS-constant" class="">EXT_SUPPORTED_OPTIONS =
+          
+        </dt>
+        <dd><pre class="code"><span class='lbrace token'>{</span>
+<span class='symbol val'>:ext_read</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='lbrack token'>[</span><span class='symbol val'>:limit</span><span class='comma token'>,</span> <span class='symbol val'>:offset</span><span class='comma token'>,</span> <span class='symbol val'>:start</span><span class='comma token'>,</span> <span class='symbol val'>:sort</span><span class='comma token'>,</span> <span class='symbol val'>:dir</span><span class='comma token'>,</span> <span class='symbol val'>:conditions</span><span class='comma token'>,</span> <span class='symbol val'>:order</span><span class='comma token'>,</span> <span class='symbol val'>:group</span><span class='comma token'>,</span> <span class='symbol val'>:having</span><span class='comma token'>,</span> <span class='symbol val'>:joins</span><span class='comma token'>,</span> <span class='symbol val'>:include</span><span class='comma token'>,</span> <span class='symbol val'>:select</span><span class='comma token'>,</span> <span class='symbol val'>:from</span><span class='comma token'>,</span> <span class='symbol val'>:readonly</span><span class='comma token'>,</span> <span class='symbol val'>:lock</span><span class='rbrack token'>]</span><span class='comma token'>,</span>
+<span class='symbol val'>:ext_create</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='lbrack token'>[</span><span class='symbol val'>:data</span><span class='rbrack token'>]</span><span class='comma token'>,</span>
+<span class='symbol val'>:ext_update</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='lbrack token'>[</span><span class='symbol val'>:data</span><span class='comma token'>,</span> <span class='symbol val'>:on_edit</span><span class='rbrack token'>]</span><span class='comma token'>,</span>
+<span class='symbol val'>:ext_destroy</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='lbrack token'>[</span><span class='symbol val'>:data</span><span class='rbrack token'>]</span> <span class='rbrace token'>}</span>
+</pre></dd>
+      
+    </dl>
+  
+
+
+
+  
+    <h2>
+      Instance Method Summary
+      <small>(<a href="#" class="summary_toggle">collapse</a>)</small>
+    </h2>
+
+    <ul class="summary">
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#call_func-instance_method" title="#call_func (instance method)">- (Object) <strong>call_func</strong>(ar, m, v = nil) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>
+Recursively call methods in associated ActiveRecord (or other) object.
+</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#filter_unsupported_options-instance_method" title="#filter_unsupported_options (instance method)">- (Hash) <strong>filter_unsupported_options</strong>(sym, options = {}) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>
+Filter the unsupported options that can be used in certain api method but
+not others.
+</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#get_association_items-instance_method" title="#get_association_items (instance method)">- (Object) <strong>get_association_items</strong>(ar, opts) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>
+Get the records attributes from associated models.
+</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#initialize-instance_method" title="#initialize (instance method)">- (Base) <strong>initialize</strong>(ar_model) </a>
+    
+
+    
+  </span>
+  
+    <span class="note title constructor">constructor</span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>
+A new instance of Base.
+</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#random_string-instance_method" title="#random_string (instance method)">- (String) <strong>random_string</strong>(size = 3) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>
+Generate a random string of alphanumeric characters.
+</p>
+</div></span>
+  
+</li>
+
+      
+    </ul>
+  
+
+<div id="constructor_details" class="method_details_list">
+  <h2>Constructor Details</h2>
+  
+    <div class="method_details first">
+  <p class="signature first" id="initialize-instance_method">
+  
+    - (<tt><a href="" title="ActiveExtAPI::Base (class)">Base</a></tt>) <strong>initialize</strong>(ar_model) 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>
+A new instance of Base
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+16
+17
+18
+19</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/active_ext_api/base.rb', line 16</span>
+
+<span class='def def kw'>def</span> <span class='initialize identifier id'>initialize</span><span class='lparen token'>(</span><span class='ar_model identifier id'>ar_model</span><span class='rparen token'>)</span>
+  <span class='@response ivar id'>@response</span> <span class='assign token'>=</span> <span class='ExtResponse constant id'>ExtResponse</span><span class='dot token'>.</span><span class='new identifier id'>new</span>
+  <span class='@active_record_model ivar id'>@active_record_model</span> <span class='assign token'>=</span> <span class='ar_model identifier id'>ar_model</span>
+<span class='end end kw'>end</span>
+</pre>
+    </td>
+  </tr>
+</table>
+</div>
+  
+</div>
+
+
+  <div id="instance_method_details" class="method_details_list">
+    <h2>Instance Method Details</h2>
+    
+    
+      <div class="method_details first">
+  <p class="signature first" id="call_func-instance_method">
+  
+    - (<tt>Object</tt>) <strong>call_func</strong>(ar, m, v = nil) 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>
+Recursively call methods in associated ActiveRecord (or other) object
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+  <div class="examples">
+    <h3>Examples:</h3>
+    
+      <h4><div class='inline'><p>
+calling book.author.country.name= &#8220;France&#8220;
+</p>
+</div></h4>
+      <pre class="example code"><span class='call_func identifier id'>call_func</span><span class='lparen token'>(</span><span class='book identifier id'>book</span><span class='comma token'>,</span> <span class='lbrack token'>[</span><span class='string val'>&quot;author&quot;</span><span class='comma token'>,</span> <span class='string val'>&quot;country&quot;</span><span class='comma token'>,</span> <span class='string val'>&quot;name&quot;</span><span class='rbrack token'>]</span><span class='comma token'>,</span> <span class='string val'>&quot;France&quot;</span><span class='rparen token'>)</span>
+</pre>
+    
+      <h4><div class='inline'><p>
+calling book.author.country.save
+</p>
+</div></h4>
+      <pre class="example code"><span class='call_func identifier id'>call_func</span><span class='lparen token'>(</span><span class='book identifier id'>book</span><span class='comma token'>,</span> <span class='lbrack token'>[</span><span class='string val'>&quot;author&quot;</span><span class='comma token'>,</span> <span class='string val'>&quot;country&quot;</span><span class='comma token'>,</span> <span class='string val'>&quot;save&quot;</span><span class='rbrack token'>]</span><span class='rparen token'>)</span>
+</pre>
+    
+      <h4><div class='inline'><p>
+calling book.author.books.each {|b| #-> save the title, the year and the
+country property }
+</p>
+</div></h4>
+      <pre class="example code"><span class='call_func identifier id'>call_func</span><span class='lparen token'>(</span><span class='book identifier id'>book</span><span class='comma token'>,</span> <span class='lbrack token'>[</span><span class='string val'>&quot;author&quot;</span><span class='comma token'>,</span> <span class='string val'>&quot;books&quot;</span><span class='comma token'>,</span> <span class='lbrack token'>[</span><span class='string val'>&quot;title&quot;</span><span class='comma token'>,</span> <span class='string val'>&quot;year&quot;</span><span class='comma token'>,</span> <span class='string val'>&quot;country&quot;</span><span class='rbrack token'>]</span><span class='rbrack token'>]</span><span class='rparen token'>)</span>
+</pre>
+    
+  </div>
+<h3>Parameters:</h3>
+<ul class="param">
+  
+    <li>
+      
+        <span class='type'>(<tt>Object</tt>)</span>
+      
+      
+        <span class='name'>ar</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>
+The base object (here an ActiveRecord::Base instance) on which to start the
+call chain
+</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='type'>(<tt>Array</tt>)</span>
+      
+      
+        <span class='name'>m</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>
+An array containing the chain of method to call The last item of m can be
+an array with several method or attributes names In this case the return
+value will be a hash.
+</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='type'>(<tt>optional Object</tt>)</span>
+      
+      
+        <span class='name'>v</span>
+      
+      
+        <em class="default">(defaults to: <tt>nil</tt>)</em>
+      
+      
+        &mdash;
+        <div class='inline'><p>
+An optional value that will be assigned to the last item in the chain.
+</p>
+</div>
+      
+    </li>
+  
+</ul>
+<h3>Returns:</h3>
+<ul class="return">
+  
+    <li>
+      
+        <span class='type'></span>
+      
+      
+      
+      
+        
+        <div class='inline'><p>
+The return value of the last method call in the chain
+</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75
+76
+77
+78
+79
+80
+81
+82
+83
+84
+85
+86
+87
+88</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/active_ext_api/base.rb', line 50</span>
+
+<span class='def def kw'>def</span> <span class='call_func identifier id'>call_func</span><span class='lparen token'>(</span><span class='ar identifier id'>ar</span><span class='comma token'>,</span> <span class='m identifier id'>m</span><span class='comma token'>,</span> <span class='v identifier id'>v</span> <span class='assign token'>=</span> <span class='nil nil kw'>nil</span><span class='rparen token'>)</span>
+  <span class='m identifier id'>m</span> <span class='assign token'>=</span> <span class='lbrack token'>[</span><span class='m identifier id'>m</span><span class='rbrack token'>]</span> <span class='if if_mod kw'>if</span> <span class='notop op'>!</span><span class='m identifier id'>m</span><span class='dot token'>.</span><span class='kind_of? fid id'>kind_of?</span> <span class='Array constant id'>Array</span>
+  <span class='mm identifier id'>mm</span> <span class='assign token'>=</span> <span class='m identifier id'>m</span><span class='lbrack token'>[</span><span class='integer val'>1</span><span class='comma token'>,</span> <span class='m identifier id'>m</span><span class='dot token'>.</span><span class='length identifier id'>length</span> <span class='minus op'>-</span> <span class='integer val'>1</span><span class='rbrack token'>]</span> 
+  <span class='if if kw'>if</span> <span class='mm identifier id'>mm</span> <span class='eq op'>==</span> <span class='lbrack token'>[</span><span class='rbrack token'>]</span> <span class='comment val'>#last element</span>
+    <span class='if if kw'>if</span> <span class='notop op'>!</span><span class='m identifier id'>m</span><span class='lbrack token'>[</span><span class='integer val'>0</span><span class='rbrack token'>]</span><span class='dot token'>.</span><span class='kind_of? fid id'>kind_of?</span> <span class='Array constant id'>Array</span>
+      <span class='if if kw'>if</span> <span class='v identifier id'>v</span> <span class='neq op'>!=</span> <span class='nil nil kw'>nil</span>
+        <span class='ms identifier id'>ms</span> <span class='assign token'>=</span> <span class='lparen token'>(</span><span class='m identifier id'>m</span><span class='lbrack token'>[</span><span class='integer val'>0</span><span class='rbrack token'>]</span><span class='plus op'>+</span><span class='string val'>&quot;=&quot;</span><span class='rparen token'>)</span><span class='dot token'>.</span><span class='to_sym identifier id'>to_sym</span>
+        <span class='ar identifier id'>ar</span><span class='dot token'>.</span><span class='send identifier id'>send</span> <span class='ms identifier id'>ms</span><span class='comma token'>,</span> <span class='v identifier id'>v</span> 
+      <span class='else else kw'>else</span>
+        <span class='ms identifier id'>ms</span> <span class='assign token'>=</span> <span class='m identifier id'>m</span><span class='lbrack token'>[</span><span class='integer val'>0</span><span class='rbrack token'>]</span><span class='dot token'>.</span><span class='to_sym identifier id'>to_sym</span>
+        <span class='ar identifier id'>ar</span><span class='dot token'>.</span><span class='send identifier id'>send</span> <span class='ms identifier id'>ms</span> 
+      <span class='end end kw'>end</span>
+    <span class='else else kw'>else</span>
+      <span class='narh identifier id'>narh</span> <span class='assign token'>=</span> <span class='lbrace token'>{</span><span class='rbrace token'>}</span>
+      <span class='m identifier id'>m</span><span class='lbrack token'>[</span><span class='integer val'>0</span><span class='rbrack token'>]</span><span class='dot token'>.</span><span class='each identifier id'>each</span> <span class='do do kw'>do</span> <span class='bitor op'>|</span><span class='ma identifier id'>ma</span><span class='bitor op'>|</span> 
+        <span class='if if kw'>if</span> <span class='v identifier id'>v</span> <span class='neq op'>!=</span> <span class='nil nil kw'>nil</span>
+          <span class='ms identifier id'>ms</span> <span class='assign token'>=</span> <span class='lparen token'>(</span><span class='ma identifier id'>ma</span><span class='plus op'>+</span><span class='string val'>&quot;=&quot;</span><span class='rparen token'>)</span><span class='dot token'>.</span><span class='to_sym identifier id'>to_sym</span>
+          <span class='narh identifier id'>narh</span><span class='lbrack token'>[</span><span class='ma identifier id'>ma</span><span class='rbrack token'>]</span> <span class='assign token'>=</span> <span class='ar identifier id'>ar</span><span class='dot token'>.</span><span class='send identifier id'>send</span> <span class='ms identifier id'>ms</span><span class='comma token'>,</span> <span class='v identifier id'>v</span> 
+        <span class='else else kw'>else</span>
+          <span class='ms identifier id'>ms</span> <span class='assign token'>=</span> <span class='ma identifier id'>ma</span><span class='dot token'>.</span><span class='to_sym identifier id'>to_sym</span>
+          <span class='narh identifier id'>narh</span><span class='lbrack token'>[</span><span class='ma identifier id'>ma</span><span class='rbrack token'>]</span> <span class='assign token'>=</span> <span class='ar identifier id'>ar</span><span class='dot token'>.</span><span class='send identifier id'>send</span> <span class='ms identifier id'>ms</span> 
+        <span class='end end kw'>end</span>
+      <span class='end end kw'>end</span>
+      <span class='narh identifier id'>narh</span>
+    <span class='end end kw'>end</span>
+  <span class='else else kw'>else</span>
+    <span class='ms identifier id'>ms</span> <span class='assign token'>=</span> <span class='m identifier id'>m</span><span class='lbrack token'>[</span><span class='integer val'>0</span><span class='rbrack token'>]</span><span class='dot token'>.</span><span class='to_sym identifier id'>to_sym</span>
+    <span class='nar identifier id'>nar</span> <span class='assign token'>=</span> <span class='ar identifier id'>ar</span><span class='dot token'>.</span><span class='send identifier id'>send</span> <span class='ms identifier id'>ms</span>
+    <span class='if if kw'>if</span> <span class='nar identifier id'>nar</span><span class='dot token'>.</span><span class='kind_of? fid id'>kind_of?</span> <span class='Array constant id'>Array</span>
+      <span class='nara identifier id'>nara</span> <span class='assign token'>=</span> <span class='lbrack token'>[</span><span class='rbrack token'>]</span>
+      <span class='nar identifier id'>nar</span><span class='dot token'>.</span><span class='each identifier id'>each</span> <span class='do do kw'>do</span> <span class='bitor op'>|</span><span class='nari identifier id'>nari</span><span class='bitor op'>|</span>
+        <span class='nara identifier id'>nara</span><span class='dot token'>.</span><span class='push identifier id'>push</span> <span class='call_func identifier id'>call_func</span> <span class='nari identifier id'>nari</span><span class='comma token'>,</span> <span class='mm identifier id'>mm</span><span class='comma token'>,</span> <span class='v identifier id'>v</span> 
+      <span class='end end kw'>end</span>
+      <span class='nara identifier id'>nara</span>
+    <span class='else else kw'>else</span>
+      <span class='call_func identifier id'>call_func</span> <span class='nar identifier id'>nar</span><span class='comma token'>,</span> <span class='mm identifier id'>mm</span><span class='comma token'>,</span> <span class='v identifier id'>v</span>
+    <span class='end end kw'>end</span>
+  <span class='end end kw'>end</span>
+<span class='end end kw'>end</span>
+</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="filter_unsupported_options-instance_method">
+  
+    - (<tt>Hash</tt>) <strong>filter_unsupported_options</strong>(sym, options = {}) 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>
+Filter the unsupported options that can be used in certain api method but
+not others
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <h3>Parameters:</h3>
+<ul class="param">
+  
+    <li>
+      
+        <span class='type'>(<tt>Symbol</tt>)</span>
+      
+      
+        <span class='name'>sym</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>
+the name of the method
+</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='type'>(<tt>Hash</tt>)</span>
+      
+      
+        <span class='name'>options</span>
+      
+      
+        <em class="default">(defaults to: <tt>{}</tt>)</em>
+      
+      
+        &mdash;
+        <div class='inline'><p>
+an options hash
+</p>
+</div>
+      
+    </li>
+  
+</ul>
+<h3>Returns:</h3>
+<ul class="return">
+  
+    <li>
+      
+        <span class='type'>(<tt>Hash</tt>)</span>
+      
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>
+return options without any options not defined in EXT_SUPPORTED_OPTIONS
+</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+26
+27
+28
+29
+30</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/active_ext_api/base.rb', line 26</span>
+
+<span class='def def kw'>def</span> <span class='filter_unsupported_options identifier id'>filter_unsupported_options</span><span class='lparen token'>(</span><span class='sym identifier id'>sym</span><span class='comma token'>,</span> <span class='options identifier id'>options</span> <span class='assign token'>=</span> <span class='lbrace token'>{</span><span class='rbrace token'>}</span><span class='rparen token'>)</span> 
+  <span class='options identifier id'>options</span><span class='dot token'>.</span><span class='delete_if identifier id'>delete_if</span> <span class='do do kw'>do</span> <span class='bitor op'>|</span><span class='key identifier id'>key</span><span class='comma token'>,</span> <span class='value identifier id'>value</span><span class='bitor op'>|</span>
+    <span class='notop op'>!</span><span class='EXT_SUPPORTED_OPTIONS constant id'>EXT_SUPPORTED_OPTIONS</span><span class='lbrack token'>[</span><span class='sym identifier id'>sym</span><span class='rbrack token'>]</span><span class='dot token'>.</span><span class='include? fid id'>include?</span> <span class='key identifier id'>key</span>
+  <span class='end end kw'>end</span>
+<span class='end end kw'>end</span>
+</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="get_association_items-instance_method">
+  
+    - (<tt>Object</tt>) <strong>get_association_items</strong>(ar, opts) 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>
+Get the records attributes from associated models
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <h3>Parameters:</h3>
+<ul class="param">
+  
+    <li>
+      
+        <span class='type'>(<tt>ActiveRecord::Base</tt>)</span>
+      
+      
+        <span class='name'>an</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>
+instanciated active record model
+</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='type'>(<tt>Hash</tt>)</span>
+      
+      
+        <span class='name'>opts</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>
+the query option hash. It must contain a :include key
+</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+103
+104
+105
+106
+107
+108
+109
+110
+111
+112
+113
+114
+115
+116
+117
+118
+119</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/active_ext_api/base.rb', line 103</span>
+
+<span class='def def kw'>def</span> <span class='get_association_items identifier id'>get_association_items</span><span class='lparen token'>(</span><span class='ar identifier id'>ar</span><span class='comma token'>,</span> <span class='opts identifier id'>opts</span><span class='rparen token'>)</span>
+    <span class='s identifier id'>s</span> <span class='assign token'>=</span> <span class='lbrace token'>{</span><span class='rbrace token'>}</span>
+    <span class='if if kw'>if</span><span class='lparen token'>(</span><span class='opts identifier id'>opts</span><span class='lbrack token'>[</span><span class='symbol val'>:include</span><span class='rbrack token'>]</span> <span class='neq op'>!=</span> <span class='nil nil kw'>nil</span><span class='rparen token'>)</span>   
+      <span class='opts identifier id'>opts</span><span class='lbrack token'>[</span><span class='symbol val'>:include</span><span class='rbrack token'>]</span><span class='dot token'>.</span><span class='each identifier id'>each</span> <span class='do do kw'>do</span> <span class='bitor op'>|</span><span class='j identifier id'>j</span><span class='bitor op'>|</span>
+        <span class='if if kw'>if</span> <span class='ar identifier id'>ar</span><span class='dot token'>.</span><span class='send identifier id'>send</span><span class='lparen token'>(</span><span class='j identifier id'>j</span><span class='rparen token'>)</span><span class='dot token'>.</span><span class='kind_of? fid id'>kind_of?</span> <span class='Array constant id'>Array</span>
+          <span class='m_a identifier id'>m_a</span> <span class='assign token'>=</span> <span class='lbrack token'>[</span><span class='rbrack token'>]</span>
+          <span class='ar identifier id'>ar</span><span class='dot token'>.</span><span class='send identifier id'>send</span><span class='lparen token'>(</span><span class='j identifier id'>j</span><span class='rparen token'>)</span><span class='dot token'>.</span><span class='each identifier id'>each</span> <span class='do do kw'>do</span> <span class='bitor op'>|</span><span class='m identifier id'>m</span><span class='bitor op'>|</span>
+           <span class='m_a identifier id'>m_a</span><span class='dot token'>.</span><span class='push identifier id'>push</span> <span class='m identifier id'>m</span><span class='dot token'>.</span><span class='attributes identifier id'>attributes</span> 
+          <span class='end end kw'>end</span>
+          <span class='s identifier id'>s</span><span class='lbrack token'>[</span><span class='j identifier id'>j</span><span class='dot token'>.</span><span class='to_s identifier id'>to_s</span><span class='rbrack token'>]</span> <span class='assign token'>=</span> <span class='m_a identifier id'>m_a</span>
+        <span class='else else kw'>else</span>
+          <span class='s identifier id'>s</span><span class='lbrack token'>[</span><span class='j identifier id'>j</span><span class='dot token'>.</span><span class='to_s identifier id'>to_s</span><span class='rbrack token'>]</span> <span class='assign token'>=</span> <span class='ar identifier id'>ar</span><span class='dot token'>.</span><span class='send identifier id'>send</span><span class='lparen token'>(</span><span class='j identifier id'>j</span><span class='rparen token'>)</span><span class='dot token'>.</span><span class='attributes identifier id'>attributes</span>
+        <span class='end end kw'>end</span>
+      <span class='end end kw'>end</span>
+    <span class='end end kw'>end</span>
+    <span class='s identifier id'>s</span>
+<span class='end end kw'>end</span>
+</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="random_string-instance_method">
+  
+    - (<tt>String</tt>) <strong>random_string</strong>(size = 3) 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>
+Generate a random string of alphanumeric characters
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <h3>Parameters:</h3>
+<ul class="param">
+  
+    <li>
+      
+        <span class='type'>(<tt>Integer</tt>)</span>
+      
+      
+        <span class='name'>the</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>
+size of the wanted string (defaults to 3)
+</p>
+</div>
+      
+    </li>
+  
+</ul>
+<h3>Returns:</h3>
+<ul class="return">
+  
+    <li>
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>
+a random string
+</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+94
+95
+96
+97</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/active_ext_api/base.rb', line 94</span>
+
+<span class='def def kw'>def</span> <span class='random_string identifier id'>random_string</span><span class='lparen token'>(</span><span class='size identifier id'>size</span> <span class='assign token'>=</span> <span class='integer val'>3</span><span class='rparen token'>)</span> 
+  <span class='b identifier id'>b</span> <span class='assign token'>=</span>  <span class='lparen token'>(</span><span class='float val'>48</span><span class='dot2 op'>..</span><span class='integer val'>57</span><span class='rparen token'>)</span><span class='dot token'>.</span><span class='to_a identifier id'>to_a</span> <span class='plus op'>+</span> <span class='lparen token'>(</span><span class='float val'>65</span><span class='dot2 op'>..</span><span class='integer val'>90</span><span class='rparen token'>)</span><span class='dot token'>.</span><span class='to_a identifier id'>to_a</span> <span class='plus op'>+</span> <span class='lparen token'>(</span><span class='float val'>97</span><span class='dot2 op'>..</span><span class='integer val'>122</span><span class='rparen token'>)</span><span class='dot token'>.</span><span class='to_a identifier id'>to_a</span>
+  <span class='lparen token'>(</span><span class='integer val'>0</span><span class='dot3 op'>...</span><span class='size identifier id'>size</span><span class='rparen token'>)</span><span class='dot token'>.</span><span class='collect identifier id'>collect</span> <span class='lbrace token'>{</span> <span class='b identifier id'>b</span><span class='lbrack token'>[</span><span class='Kernel constant id'>Kernel</span><span class='dot token'>.</span><span class='rand identifier id'>rand</span><span class='lparen token'>(</span><span class='b identifier id'>b</span><span class='dot token'>.</span><span class='length identifier id'>length</span><span class='rparen token'>)</span><span class='rbrack token'>]</span><span class='dot token'>.</span><span class='chr identifier id'>chr</span> <span class='rbrace token'>}</span><span class='dot token'>.</span><span class='join identifier id'>join</span>
+<span class='end end kw'>end</span>
+</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+  </div>
+
+</div>
+    
+    <div id="footer">
+  Generated on Fri Sep  3 18:55:01 2010 by 
+  <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool">yard</a>
+  0.5.8 (ruby-1.8.7).
+</div>
+
+  </body>
+</html>
