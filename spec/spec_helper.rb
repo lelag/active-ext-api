@@ -1,4 +1,5 @@
 require "rubygems"
+require "logger"
 require 'active_record'
 require 'active_support'
 require "spec"
@@ -8,6 +9,7 @@ require File.dirname(__FILE__) + '/../lib/active_ext_api'
 require "pp"
 
 plugin_spec_dir = File.dirname(__FILE__)
+
 RAILS_ENV = 'test'
 ActiveRecord::Base.logger = Logger.new(plugin_spec_dir + "/debug.log")
 
@@ -23,25 +25,4 @@ ActiveRecord::Base.establish_connection(
 )
 load(plugin_spec_dir + '/db/schema.rb')
 require plugin_spec_dir + '/fixtures/models.rb'
-
-Spec::Runner.configure do |config|
-  config.include Rack::Test::Methods
-
-  def app
-    Rack::Builder.new do
-      use ActiveDirect::Router, "/direct_router"
-      use ActiveDirect::Api, "/direct_api", "/direct_router"
-      map '/' do
-        run Proc.new {|env| [200, {"Content-Type" => "text/html"}, "ActiveDirect test"] }
-      end
-    end.to_app
-  end
-
-
-	def do_post(params)
-		post '/direct_router',{}, {'RAW_POST_DATA' => params.to_json }
-	end
-
-end
-
 
