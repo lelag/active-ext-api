@@ -91,12 +91,7 @@ module ActiveExtAPI
       list = @active_record_model.find(:all, opts)
       list.each do |r|
         s = r.attributes
-        if(opts[:include] != nil)   # add assotiations if requested {attr_id, attr : {id: ...
-          opts[:include].each do |j|
-            s[j.to_s] = r.send(j).attributes
-          end
-        end
-        @response.add_data s
+        @response.add_data (s.merge get_association_items(r, opts))
       end
 
       @response.add(:total, total || @response.data.length)

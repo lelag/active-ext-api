@@ -56,9 +56,22 @@ describe ActiveExtAPI::ClassMethods, "ext_read" do
           r["publisher"]["name"].should == b.publisher.name
         end
     end
-    it "should only include many_to_one or one_to_one associations" 
-
-    it "should be able to handle recursion in linked model"        
+    it "should return an array of record for has_many assoc"  do
+        result = Author.ext_read({:include => [:books]})
+        result[:data].each do |r|
+          a = Author.find r["id"]
+          r.should have_key "books"
+          a.books.each do |i|
+            book_found = false
+            r["books"].each do |db|
+              if db["id"] == i.id
+                book_found = true
+              end
+            end
+            book_found.should == true
+          end
+        end
+    end
   end
   context "with a sorting request" do
     it "should sort the results according to a sort option (model own attribute)" do
