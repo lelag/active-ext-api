@@ -151,6 +151,11 @@ module ActiveExtAPI
       ext_api.get_nodes node, opts
     end
 
+    def ext_form_load(opts = {})
+      ext_api = ActiveExtAPI::Form.new self
+      ext_api.load opts 
+    end
+
   end
 
 end
