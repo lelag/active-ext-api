@@ -63,6 +63,28 @@ module ActiveExtAPI
       opts 
     end
 
+    # Get the records attributes from associated models
+    #
+    # @param [ActiveRecord::Base] an instanciated active record model
+    # @param [Hash] opts the query option hash. It must contain a :include key
+    def get_association_items(ar, opts)
+        s = {}
+        if(opts[:include] != nil)   
+          opts[:include].each do |j|
+            if ar.send(j).kind_of? Array
+              m_a = []
+              ar.send(j).each do |m|
+               m_a.push m.attributes 
+              end
+              s[j.to_s] = m_a
+            else
+              s[j.to_s] = ar.send(j).attributes
+            end
+          end
+        end
+        s
+    end
+
     # Return a list of records that can be used to load an ExtJS Store
     #
     # @param [Hash] opts the options provided by ExtJS to request records

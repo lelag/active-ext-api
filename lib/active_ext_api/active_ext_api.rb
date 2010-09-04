@@ -152,7 +152,7 @@ module ActiveExtAPI
     end
 
     def ext_form_load(opts = {})
-      ext_api = ActiveExtAPI::Form.new self
+      ext_api = ActiveExtAPI::FormLoad.new self
       ext_api.load opts 
     end
 
