@@ -7,7 +7,7 @@
 #   - ext_delete : used to delete records
 # @author Le Lag
 module ActiveExtAPI 
-  DEFAULT_METHODS = { 'ext_read' => 1, 'ext_create' => 1, 'ext_update' => 1, 'ext_destroy' => 1, 'ext_get_nodes'=> 2 }
+  DEFAULT_METHODS = { 'ext_read' => 1, 'ext_create' => 1, 'ext_update' => 1, 'ext_destroy' => 1, 'ext_get_nodes'=> 2, 'ext_form_load' => 2, 'ext_form_submit'=> {:len =>1, :formHandler=>1}}
 
   def self.included(base)
     base.send :extend, ClassMethods
@@ -151,9 +151,16 @@ module ActiveExtAPI
       ext_api.get_nodes node, opts
     end
 
-    def ext_form_load(opts = {})
+    def ext_form_load(id, opts = {})
       ext_api = ActiveExtAPI::FormLoad.new self
-      ext_api.load opts 
+      ext_api.load id, opts 
+    end
+
+    def ext_form_submit(opts = {})
+      pp opts
+      return opts 
+      ext_api = ActiveExtAPI::FormSubmit.new self
+      ext_api.submit opts 
     end
 
   end
